@@ -457,7 +457,7 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    display: block;
 }
 
 .image-container:hover .image-caption {
@@ -589,7 +589,7 @@ p {
 
 /* Responsive grid layouts */
 @media screen and (min-width: 1921px) {
-    .image-grid {
+    .image-grid, .image-grid-two, .image-grid-three, .image-grid-four {
         grid-template-columns: repeat(4, 1fr);
         width: 80%;
         gap: 3rem;
@@ -597,7 +597,7 @@ p {
 }
 
 @media screen and (max-width: 1920px) {
-    .image-grid {
+    .image-grid, .image-grid-two, .image-grid-three, .image-grid-four {
         grid-template-columns: repeat(4, 1fr);
         width: 85%;
         gap: 2.5rem;
@@ -605,7 +605,7 @@ p {
 }
 
 @media screen and (max-width: 1280px) {
-    .image-grid {
+    .image-grid, .image-grid-two, .image-grid-three, .image-grid-four {
         grid-template-columns: repeat(4, 1fr);
         width: 90%;
         gap: 2rem;
@@ -613,7 +613,7 @@ p {
 }
 
 @media screen and (max-width: 768px) {
-    .image-grid {
+    .image-grid, .image-grid-two, .image-grid-three, .image-grid-four {
         grid-template-columns: repeat(2, 1fr);
         width: 95%;
         gap: 1.5rem;
@@ -622,7 +622,7 @@ p {
 }
 
 @media screen and (max-width: 480px) {
-    .image-grid {
+    .image-grid, .image-grid-two, .image-grid-three, .image-grid-four{
         grid-template-columns: 1fr;
         width: 95%;
         gap: 1rem;
@@ -699,5 +699,42 @@ p {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+}
+
+/* Top image grid position */
+.top-position {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--section-width, 90%);
+    max-width: var(--section-max-width, 1400px);
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    z-index: 1;
+}
+
+/* Ensure all image containers have consistent styling */
+.top-position .image-container {
+    pointer-events: auto;
+    position: relative;
+    aspect-ratio: 2/3;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.top-position .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.top-position .image-container:hover img {
+    transform: scale(1.05);
 }
 
