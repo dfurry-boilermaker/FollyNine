@@ -16,6 +16,28 @@
         box-sizing: border-box;
     }
 
+    header h1,
+    .title-button h1 {
+        font-family: Trattatello, 'Trattatello', fantasy, cursive;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 500;  /* Adjust weight if needed */
+        color: transparent;
+        background-image: linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.8) 25%,
+            rgba(255, 255, 255, 0.95) 50%,
+            rgba(255, 255, 255, 0.8) 75%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        text-shadow: 
+            0 0 1px rgba(255, 255, 255, 0.2),
+            0 0 2px rgba(255, 255, 255, 0.1),
+            1px 1px 2px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+
     header {
         padding: 0.5rem 1rem;
         height: auto;
@@ -36,8 +58,12 @@
         padding: 15px 20px;
         margin-right: 0;  /* Remove right margin */
         font-size: 0.9rem;  /* Slightly smaller font */
-        letter-spacing: 0;  /* Remove letter spacing */
+        letter-spacing: 1;  /* Remove letter spacing */
         white-space: nowrap;  /* Prevent text wrapping */
+        font-weight: 400;  /* Normal weight instead of bold */
+        font-family: Trattatello, 'Trattatello', fantasy, cursive;
+
+
     }
 
     .close-button {
@@ -147,6 +173,29 @@
     .fullscreen-container {
         padding-top: 80px;  /* Add space at top for close button */
     }
+
+    /* Apply consistent fonts across all text elements */
+    .photography-content-container,
+    .software-content-container,
+    .trading-content-container,
+    .photography-section-header h2,
+    .software-section-header h2,
+    .trading-section-header h2,
+    .photography-content-container p,
+    .software-content-container p,
+    .trading-content-container p {
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;  /* Match desktop font */
+        -webkit-font-smoothing: antialiased;  /* Better font rendering on iOS */
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ensure button text also uses the correct font */
+    .close-button {
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
 }
 
 
@@ -169,6 +218,7 @@ Extra small devices (phones under 480px)
         padding: 12px 15px;
         font-size: 0.85rem;  /* Even smaller for very small screens */
         letter-spacing: -0.5px;  /* Tighten letter spacing if needed */
+        font-weight: 400;  /* Ensure normal weight on smaller screens */
     }
 
     .close-button {
@@ -228,6 +278,7 @@ Extra small devices
         height: 45px;
         padding: 10px 12px;
         font-size: 0.8rem;
+        font-weight: 400;  /* Maintain normal weight on smallest screens */
     }
 
     .photography-section-header h2,

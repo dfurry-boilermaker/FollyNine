@@ -22,7 +22,15 @@ document.addEventListener('DOMContentLoaded', function() {
         img.addEventListener('click', function() {
             const caption = this.parentElement.querySelector('.image-caption').cloneNode(true);
             imageContainer.innerHTML = '';
-            imageContainer.appendChild(this.cloneNode(true));
+            const fullscreenImg = this.cloneNode(true);
+            
+            // Add click handler to fullscreen image
+            fullscreenImg.addEventListener('click', function(e) {
+                e.stopPropagation();  // Prevent double-closing
+                closeFullscreen();
+            });
+            
+            imageContainer.appendChild(fullscreenImg);
             imageContainer.appendChild(caption);
             fullscreenContainer.style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -33,6 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
     closeButton.addEventListener('click', closeFullscreen);
     fullscreenContainer.addEventListener('click', function(e) {
         if (e.target === fullscreenContainer) {
+            closeFullscreen();
+        }
+    });
+
+    // Add ESC key handler
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && fullscreenContainer.style.display === 'flex') {
             closeFullscreen();
         }
     });
