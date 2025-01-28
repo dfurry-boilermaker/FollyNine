@@ -1,2 +1,2 @@
 # FollyNine
-Website for FollyNine
+Node website for FollyNine
