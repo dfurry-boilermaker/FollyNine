@@ -1,7 +1,9 @@
 @font-face {
-    font-family: 'TrattatelloCustom';
-    src: url('/fonts/Trattatello.ttf') format('truetype');
-    /* Add the font file to your project's public/fonts directory */
+    font-family: 'Trattatello';
+    src: src('/fonts/Trattatello.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 /* Mobile styles for screens under 768px */
@@ -35,13 +37,14 @@
         box-sizing: border-box;
     }
 
-    .title-button h1 {
-        font-family: 'TrattatelloCustom', Trattatello, fantasy;
-        font-size: 2rem;  /* Adjust size for mobile */
-        margin: 0;
-        padding: 0;
-        text-align: left;
-        white-space: nowrap;
+    .title-button h1,
+    header h1 {
+        font-family: 'Trattatello', 
+                     'Zapfino',           
+                     'Snell Roundhand',   
+                     'Brush Script MT', 
+                     'Lucida Handwriting',
+                     cursive;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -50,6 +53,8 @@
     .about-button {
         margin-left: 1rem;
         flex-shrink: 0;  /* Prevent button from shrinking */
+        font-weight: 400;  /* Normal weight for better readability */
+        letter-spacing: 0;
     }
 
     /* Remove any inherited margins */
@@ -103,33 +108,25 @@
     }
 
     .close-button {
-        position: fixed;
-        top: 20px;  /* Increased from top edge */
-        right: 20px;
-        width: 50px;  /* Smaller size for mobile */
-        height: 40px;
-        padding: 8px 12px;
-        font-size: 0.8rem;
-        z-index: 2002;  /* Ensure it's above other content */
-        margin: 10px;  /* Add some margin */
+        display: none;  /* Hide close button on mobile */
     }
 
-    .image-caption {
-        font-size: 0.9rem;  /* Smaller font size for tablets */
-        padding: 0.8rem 0.5rem;
-        letter-spacing: 0.3px;
-    }
 
     .fullscreen-image-container {
-        max-height: calc(100vh - 100px);  /* Account for button space */
-        display: flex;
-        align-items: center;
+        max-height: 100vh;  /* Use full height since no button */
+        max-width: 100%;
         justify-content: center;
+        align-items: center;
     }
 
     .fullscreen-image-container img {
-        max-height: calc(100vh - 120px);  /* Slightly less than container */
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
         object-fit: contain;
+        margin: auto;
+        
     }
 
     /* Hide grid captions on mobile */
@@ -141,7 +138,7 @@
     /* Show captions only in fullscreen mode */
     .fullscreen-container .image-caption {
         opacity: 1;
-        position: fixed;
+        position: absolute;
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
@@ -207,7 +204,7 @@
     }
 
     .fullscreen-container {
-        padding-top: 80px;  /* Add space at top for close button */
+        padding-top: 0;  /* Remove padding that was for close button */
     }
 
     /* Apply consistent fonts across all text elements */
@@ -232,6 +229,63 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
+    /* Hide close button only in fullscreen image view */
+    .fullscreen-container .close-button {
+        display: none;
+    }
+
+    /* Style close button for About popup */
+    .about-popup .close-button {
+        position: absolute;
+        top: 50px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        background: none;  /* Remove background */
+        color: #fff;
+        border: 1px solid white;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        z-index: 2002;
+    }
+
+
+    .close-button {
+        position: absolute;
+        top: 50px;
+        right: 15px;
+        background: white;
+        border: 1px solid white;
+        color: black;
+        font-size: 24px;
+        cursor: pointer;
+        background-image: linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.8) 25%,
+            rgba(255, 255, 255, 0.95) 50%,
+            rgba(255, 255, 255, 0.8) 75%
+        );
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        text-align: center;
+    }
+
+    .about-popup .close-button:hover {
+        opacity: 1;
+        background: none;  /* Remove hover background */
+    }
+
+    .about-content {
+        position: relative;
+        padding-top: 40px;  /* Adjusted padding */
+    }
 }
 
 
