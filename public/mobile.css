@@ -295,8 +295,36 @@
     }
 
     .about-content {
+        padding: 2rem;
+        padding-bottom: 4rem;
+        max-height: none;
+        overflow: visible;
         position: relative;
-        padding-top: 40px;  /* Adjusted padding */
+        margin: 20px;
+    }
+
+    /* Adjust text sizes in About popup */
+    .about-content h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .dictionary-definition h2 {
+        font-size: 1.5rem;
+    }
+
+    .dictionary-definition p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .definition-type {
+        font-size: 0.85rem;
     }
 }
 
@@ -376,6 +404,14 @@ Extra small devices (phones under 480px)
 
     header + .image-grid {
         margin-top: 1.5rem;  /* Adjusted for smaller screens */
+    }
+
+    .about-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .about-content p {
+        font-size: 0.85rem;
     }
 }
 

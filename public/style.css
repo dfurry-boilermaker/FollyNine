@@ -366,6 +366,8 @@ p {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    overflow-y: auto;  /* Enable vertical scrolling */
+    max-height: 100vh;  /* Full viewport height */
 }
 
 .about-popup.active {
@@ -374,15 +376,16 @@ p {
 
 .about-content {
     background: rgba(0, 0, 0, 0.95);
-    padding: 4rem;
+    padding: 2rem;
     border-radius: 8px;
     position: relative;
     width: 90%;
     max-width: 1200px;
-    max-height: 90vh;
-    overflow-y: auto;
+    max-height: none;  /* Remove any height restriction */
+    overflow: visible;  /* Allow content to flow */
     color: white;
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    margin: 20px;  /* Add some margin from edges */
 }
 
 .dictionary-definition {
@@ -445,9 +448,9 @@ p {
 }
 
 .close-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed;  /* Change from absolute to fixed */
+    top: 15px;
+    right: 15px;
     background: white;
     border: 1px solid white;
     color: black;
@@ -465,6 +468,7 @@ p {
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     min-width: 44px;
     text-align: center;
+    z-index: 2002;  /* Keep above scrolling content */
 }
 
 .main-page-wrapper {
