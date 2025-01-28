@@ -207,7 +207,14 @@
         padding-top: 0;  /* Remove padding that was for close button */
     }
 
-    /* Apply consistent fonts across all text elements */
+    /* Apply Futura to all text elements */
+    body,
+    h1, h2, h3, h4, h5, h6,
+    p,
+    button,
+    .title-button h1,
+    .about-button,
+    .close-button,
     .photography-content-container,
     .software-content-container,
     .trading-content-container,
@@ -216,17 +223,22 @@
     .trading-section-header h2,
     .photography-content-container p,
     .software-content-container p,
-    .trading-content-container p {
-        font-family: Futura, "Trebuchet MS", Arial, sans-serif;  /* Match desktop font */
-        -webkit-font-smoothing: antialiased;  /* Better font rendering on iOS */
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* Ensure button text also uses the correct font */
-    .close-button {
+    .trading-content-container p,
+    .fullscreen-caption,
+    .footer-text,
+    .about-popup .dictionary-definition,
+    .about-content p,
+    .about-content h2 {
         font-family: Futura, "Trebuchet MS", Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Remove any previous font-family declarations */
+    .title-button h1,
+    header h1,
+    .about-button {
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     }
 
     /* Hide close button only in fullscreen image view */
