@@ -18,6 +18,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-bottom: 4rem;  /* Add padding at bottom of content */
 }
 
 header {
@@ -155,6 +156,7 @@ footer {
     justify-content: center;
     align-items: center;
     margin-top: auto;
+    padding-top: 3rem;  /* Add padding above footer */
 }
 
 .footer-text {
