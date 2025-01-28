@@ -13,7 +13,7 @@ body {
     min-height: 300vh;  /* Increased from 200vh to 300vh */
     position: relative;
     overflow-x: hidden;
-    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     color: #fff;
     min-height: 100vh;
     display: flex;
@@ -613,7 +613,7 @@ p {
 }
 
 @media screen and (max-width: 768px) {
-    .image-grid, .image-grid-two, .image-grid-three, .image-grid-four {
+    .image-grid {
         grid-template-columns: repeat(2, 1fr);
         width: 95%;
         gap: 1.5rem;
@@ -622,7 +622,7 @@ p {
 }
 
 @media screen and (max-width: 480px) {
-    .image-grid, .image-grid-two, .image-grid-three, .image-grid-four{
+    .image-grid {
         grid-template-columns: 1fr;
         width: 95%;
         gap: 1rem;
