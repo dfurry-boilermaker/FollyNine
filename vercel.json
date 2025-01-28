@@ -8,7 +8,6 @@
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "public",
-  "framework": "static",
   "regions": ["iad1"],
   "env": {
     "NODE_VERSION": "18"
