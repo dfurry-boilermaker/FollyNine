@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'TrattatelloCustom';
+    src: url('/fonts/Trattatello.ttf') format('truetype');
+    /* Add the font file to your project's public/fonts directory */
+}
+
 /* Mobile styles for screens under 768px */
 @media (max-width: 768px) {
     html, body {
@@ -18,7 +24,14 @@
 
     header h1,
     .title-button h1 {
-        font-family: Trattatello, 'Trattatello', fantasy, cursive;
+        /* Primary choice is native Trattatello */
+        font-family: Trattatello, 
+                     'TrattatelloCustom',  /* Our hosted version */
+                     'Lucida Handwriting',  /* Similar decorative font */
+                     'Brush Script MT',     /* Fallback script font */
+                     'Segoe Script',        /* Windows script font */
+                     'Monotype Corsiva',    /* Another decorative option */
+                     cursive;              /* Final fallback */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-weight: 500;  /* Adjust weight if needed */
