@@ -13,7 +13,7 @@ body {
     min-height: 300vh;  /* Increased from 200vh to 300vh */
     position: relative;
     overflow-x: hidden;
-    font-family: Arial, sans-serif;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     color: #fff;
     min-height: 100vh;
     display: flex;
