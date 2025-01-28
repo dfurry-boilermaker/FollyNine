@@ -23,13 +23,14 @@ body {
 header {
     position: sticky;
     top: 0;
-    left: 0;
+    z-index: 1000;
+    background-color: black;
+    padding: 1rem 3.5rem 1rem 2rem;  /* Increased right padding */
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-    z-index: 10;
-    padding: 0.5rem 1rem;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  /* Center items vertically */
+    height: 100px;  /* Fixed height for header */
 }
 
 .title-button {
@@ -274,25 +275,80 @@ p {
 }
 
 .about-button {
-    position: absolute;
-    top: 50%;
-    right: 3rem;
-    transform: translateY(-50%);
-    background: rgb(255, 255, 255);  /* Pure white background */
-    border: none;  /* Removed border */
-    color: rgb(0, 0, 0);  /* Pure black text */
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
+    background: linear-gradient(135deg, #4a4a4a, #1a1a1a);  /* Lighter to darker grey gradient */
+    margin-left: auto;
+    margin-right: 75px;
+    color: #000000;
+    /* border: none; */
+    padding: 25px;
+    width: 135px;
+    height: 50px;
+    border-radius: 5px;
+    font-family: Trattatello, 'Trattatello', fantasy, cursive;
     font-size: 1rem;
-    transition: all 0.2s ease;
-    font-family: Futura, "Trebuchet MS", Arial, sans-serif;  /* Changed to Futura */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.8) 25%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.8) 75%
+    );
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    position: relative;
+    transform: perspective(1000px) rotateX(10deg);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    outline: 1px solid rgba(255, 255, 255, 0.05);  /* Added subtle outline */
+    outline-offset: -1px;  /* Align outline with border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.about-button:hover {
-    background: black;
-    color: white;
-    border: 1px solid white;
+.about-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1),
+        transparent 60%
+    );
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.about-button:hover, .close-button:hover {
+    /* border-color: rgba(0, 195, 255, 0.3);
+    outline-color: rgba(0, 195, 255, 0.2); */
+    color: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.8) 25%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.8) 75%
+    );
+    box-shadow: 
+        0 4px 0 #111,
+        0 8px 20px rgba(0, 0, 0, 0.6),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1),
+        0 0 20px rgba(0, 195, 255, 0.6),
+        -20px 0 30px rgba(0, 195, 255, 0.4);
+    transform: perspective(1000px) rotateX(15deg) translateY(3px);
+    transition: transform 0.1s ease;
+}
+
+/* Optional: you might want to add the same color change to active state */
+.about-button:active, .close-button:active {
+    transform: perspective(1000px) rotateX(10deg) translateY(7px);
+    transition: transform 0.05s ease;
+    color: rgba(0, 195, 255, 0.8);  /* Slightly dimmer blue when clicked */
 }
 
 .about-popup {
@@ -393,18 +449,18 @@ p {
     color: black;
     font-size: 24px;
     cursor: pointer;
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.8) 25%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.8) 75%
+    );
     padding: 8px 16px;
     border-radius: 8px;
     transition: all 0.3s ease;
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     min-width: 44px;
     text-align: center;
-}
-
-.close-button:hover {
-    background: black;
-    color: white;
-    border: 1px solid white;
 }
 
 .main-page-wrapper {
@@ -429,7 +485,6 @@ p {
     z-index: 2;
     overflow: visible;
 }
-
 
 .image-container {
     pointer-events: auto;
@@ -500,7 +555,6 @@ p {
     margin-bottom: 4rem;
 }
 
-
 /* Add fourth image grid position */
 .fourth-position {
     top: calc(var(--content-margin) + var(--grid-gap) + 390vh);
@@ -546,7 +600,6 @@ p {
     align-items: center;
     margin-bottom: 2rem;
 }
-
 
 .header-buttons {
     position: absolute;
@@ -710,6 +763,28 @@ p {
     gap: 2rem;
     padding: 2rem;
     z-index: 1;
+}
+
+.fullscreen-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fullscreen-container img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 
