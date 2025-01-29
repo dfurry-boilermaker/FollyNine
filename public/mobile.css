@@ -44,19 +44,12 @@
     .title-button h1,
     h1.site-title,
     a.title-button h1 {
-        font-family: 'TrattatelloCustom', Trattatello !important;
-        -webkit-font-smoothing: subpixel-antialiased !important;
+        font-family: Trattatello !important;
+        font-size: 2.6rem !important;
+        -webkit-font-smoothing: antialiased !important;
         -moz-osx-font-smoothing: grayscale !important;
-        font-weight: 300 !important;
-        font-size: 2.4rem !important;
+        font-weight: normal !important;
         letter-spacing: 0.05em !important;
-        word-spacing: 0.1em !important;
-        text-rendering: geometricPrecision !important;
-        transform: scale(1, 1.1) !important; /* Slight vertical stretch */
-        transform-origin: center center !important;
-        text-shadow: 0px 0px 0.2px rgba(255, 255, 255, 0.1) !important;
-        padding: 0.1em 0 !important;
-        margin: 0 !important;
     }
 
     /* Ensure proper spacing between title and button */
@@ -479,4 +472,10 @@ Extra small devices
         margin: 0.6rem 0;
     }
 
+}
+
+/* Apply to entire body for consistent font rendering */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 } 
