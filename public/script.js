@@ -56,4 +56,18 @@ document.addEventListener('DOMContentLoaded', function() {
         fullscreenContainer.style.display = 'none';
         document.body.style.overflow = '';
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const speckleContainer = document.querySelector('.speckle-container');
+    
+    // Ensure speckles start in front
+    if (speckleContainer) {
+        speckleContainer.style.zIndex = "9999";
+        
+        // Move behind after delay
+        setTimeout(() => {
+            speckleContainer.style.zIndex = "-1";
+        }, 3000);
+    }
 }); 

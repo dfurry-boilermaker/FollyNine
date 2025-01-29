@@ -37,16 +37,24 @@
         box-sizing: border-box;
     }
 
+    /* Optimized header title for iOS */
+    header .title-button h1,
+    header h1,
     .title-button h1,
-    header h1 {
-        font-family: 'Trattatello', 
-                     'Zapfino',           
-                     'Snell Roundhand',   
-                     'Brush Script MT', 
-                     'Lucida Handwriting',
-                     cursive;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+    h1.site-title,
+    a.title-button h1 {
+        font-family: Trattatello, "Trebuchet MS", Arial, sans-serif !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        font-weight: normal !important;
+        letter-spacing: normal !important;
+        text-rendering: optimizeLegibility !important;
+        -webkit-text-size-adjust: 100% !important;
+        -webkit-font-feature-settings: "kern" 1 !important;
+        font-feature-settings: "kern" 1 !important;
+        -webkit-font-kerning: normal !important;
+        font-kerning: normal !important;
+        -webkit-locale: "en" !important;
     }
 
     /* Ensure proper spacing between title and button */
@@ -102,9 +110,7 @@
         letter-spacing: 1;  /* Remove letter spacing */
         white-space: nowrap;  /* Prevent text wrapping */
         font-weight: 400;  /* Normal weight instead of bold */
-        font-family: Trattatello, 'Trattatello', fantasy, cursive;
-
-
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     }
 
     .close-button {
@@ -234,10 +240,17 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Remove any previous font-family declarations */
-    .title-button h1,
-    header h1,
-    .about-button {
+    /* Reset any inherited styles */
+    .title-button {
+        font-family: Trattatello, "Trebuchet MS", Arial, sans-serif !important;
+    }
+
+    /* Keep other text in Futura */
+    .about-button,
+    p,
+    .photography-content-container,
+    .software-content-container,
+    .trading-content-container {
         font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     }
 
@@ -315,16 +328,29 @@
     }
 
     .dictionary-definition h2 {
-        font-size: 1.5rem;
+        font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
-    .dictionary-definition p {
-        font-size: 0.9rem;
-        line-height: 1.4;
-    }
-
+    .dictionary-definition p,
     .definition-type {
-        font-size: 0.85rem;
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        font-size: 0.9rem;
+    }
+
+    /* Apply font-display for better loading */
+    @font-face {
+        font-family: 'Trattatello';
+        src: local('Trattatello');
+        font-display: swap;
+    }
+
+    /* Ensure proper text sizing on iOS */
+    html {
+        -webkit-text-size-adjust: 100%;
     }
 }
 
@@ -342,8 +368,13 @@ Extra small devices (phones under 480px)
         padding: 0.8rem;
     }
 
+    header .title-button h1,
+    header h1,
     .title-button h1 {
-        font-size: 1.8rem;  /* Slightly smaller for very small screens */
+        font-size: 1.8rem !important;
+        /* iOS-specific adjustments */
+        padding: 0.1em 0 !important; /* Prevent clipping */
+        transform: translateZ(0) !important; /* Force GPU acceleration */
     }
 
     .about-button {
@@ -412,6 +443,10 @@ Extra small devices (phones under 480px)
 
     .about-content p {
         font-size: 0.85rem;
+    }
+
+    .dictionary-definition h2 {
+        font-size: 1.4rem;  /* Even smaller for very small screens */
     }
 }
 

@@ -24,7 +24,7 @@ body {
 header {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; /* Lower than initial speckles */
     background-color: black;
     padding: 1rem 3.5rem 1rem 2rem;  /* Increased right padding */
     width: 100%;
@@ -50,7 +50,10 @@ header {
     margin: 0;
     font-size: 1.5rem;
     font-weight: 300;
-    font-family: Futura, "Trebuchet MS", Arial, sans-serif;  /* Changed to Futura */
+    font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
+    text-rendering: optimizeLegibility; /* Add for iOS font optimization */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
@@ -58,8 +61,11 @@ h1 {
     text-align: left;
     font-size: 1.8rem;
     letter-spacing: 2px;
-    font-family: Futura, "Trebuchet MS", Arial, sans-serif;  /* Changed to Futura */
+    font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
     font-weight: 100;
+    text-rendering: optimizeLegibility; /* Add for iOS font optimization */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: transparent;
     background-image: linear-gradient(
         45deg,
@@ -177,8 +183,9 @@ footer {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    z-index: 0;
+    z-index: 99999; /* Increased even higher */
     background-color: transparent;
+    transition: all 0.5s ease-in-out;
 }
 
 .speckle {
@@ -192,6 +199,7 @@ footer {
     transform: translate3d(0, 0, 0);
     transition: opacity 0.2s ease;
     opacity: 1;
+    z-index: inherit; /* Ensure speckles inherit container z-index */
 }
 
 @keyframes float {
@@ -264,9 +272,9 @@ p {
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;  /* Height of progress bar */
+    height: 4px;
     background: transparent;
-    z-index: 1000;  /* Make sure it's above everything */
+    z-index: 900; /* Lower than speckles */
 }
 
 /* Progress bar */
@@ -384,7 +392,7 @@ p {
     max-height: none;  /* Remove any height restriction */
     overflow: visible;  /* Allow content to flow */
     color: white;
-    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
     margin: 20px;  /* Add some margin from edges */
 }
 
@@ -395,8 +403,11 @@ p {
 }
 
 .dictionary-definition h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
+    font-size: 2rem;  /* Adjust size as needed */
+    margin-bottom: 0.5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .dictionary-definition p {
@@ -404,12 +415,14 @@ p {
     font-size: 1.2rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.9);
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 
 .definition-type {
     color: rgba(255, 255, 255, 0.6);
     font-size: 1rem;
     margin-bottom: 0.5rem;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 
 .popup {
@@ -482,15 +495,15 @@ p {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: var(--section-width, 90%);  /* Added fallback width */
-    max-width: var(--section-max-width, 1400px);  /* Added fallback max-width */
+    width: var(--section-width, 90%);
+    max-width: var(--section-max-width, 1400px);
     height: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     padding: 2rem;
     pointer-events: none;
-    z-index: 2;
+    z-index: 50; /* Higher base z-index */
     overflow: visible;
 }
 
@@ -503,11 +516,12 @@ p {
     transition: all 0.3s ease;
     cursor: pointer;
     transform-origin: center;  /* Grow from center */
+    z-index: 50; /* Match grid */
 }
 
 .image-container:hover {
     transform: scale(1.1);  /* Scale the entire container */
-    z-index: 100;  /* Ensure hovered container stays on top */
+    z-index: 200; /* Higher than non-hovered but lower than initial speckles */
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);  /* Add shadow for depth */
 }
 
@@ -781,7 +795,7 @@ p {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
+    z-index: 2000; /* Lower than initial speckles */
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -816,4 +830,11 @@ p {
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile adjustments if needed */
+@media (max-width: 768px) {
+    .dictionary-definition h2 {
+        font-size: 1.6rem;  /* Slightly smaller on mobile */
+    }
 }
