@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Trattatello';
+    font-family: 'TrattatelloCustom';
     src: src('/fonts/Trattatello.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
@@ -37,24 +37,23 @@
         box-sizing: border-box;
     }
 
-    /* Optimized header title for iOS */
+    /* More specific selectors for header title */
     header .title-button h1,
     header h1,
     .title-button h1,
     h1.site-title,
     a.title-button h1 {
-        font-family: Trattatello, "Trebuchet MS", Arial, sans-serif !important;
+        font-family: 'TrattatelloCustom', 
+                     'Apple Chancery',      /* iOS decorative font fallback */
+                     'Zapfino',             /* Another iOS option */
+                     'Snell Roundhand',     /* Another iOS option */
+                     cursive !important;
         -webkit-font-smoothing: antialiased !important;
         -moz-osx-font-smoothing: grayscale !important;
         font-weight: normal !important;
-        letter-spacing: normal !important;
+        font-size: 2.2rem !important;       /* Slightly larger */
+        letter-spacing: 0.02em !important;  /* Slight spacing */
         text-rendering: optimizeLegibility !important;
-        -webkit-text-size-adjust: 100% !important;
-        -webkit-font-feature-settings: "kern" 1 !important;
-        font-feature-settings: "kern" 1 !important;
-        -webkit-font-kerning: normal !important;
-        font-kerning: normal !important;
-        -webkit-locale: "en" !important;
     }
 
     /* Ensure proper spacing between title and button */
@@ -371,10 +370,7 @@ Extra small devices (phones under 480px)
     header .title-button h1,
     header h1,
     .title-button h1 {
-        font-size: 1.8rem !important;
-        /* iOS-specific adjustments */
-        padding: 0.1em 0 !important; /* Prevent clipping */
-        transform: translateZ(0) !important; /* Force GPU acceleration */
+        font-size: 2rem !important;
     }
 
     .about-button {
