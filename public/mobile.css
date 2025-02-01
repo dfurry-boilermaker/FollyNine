@@ -193,7 +193,7 @@ header .title-button {
     .photography-content-container,
     .software-content-container,
     .trading-content-container {
-        background-color: #F5F5F5;  /* Keep the dark background */
+        background-color: #FAF9F6;  /* Keep the dark background */
         padding: 0.5rem !important;
         margin-bottom: 1rem !important;  /* Add small bottom margin */
         border-radius: 4px;
@@ -218,7 +218,7 @@ div[class*="-section-header"],
     max-width: 1200px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    color: #ffffff !important;
+    color: #FAF9F6 !important;
     letter-spacing: 0.05em !important;
     position: relative !important;  /* Added for absolute positioning context */
 }
