@@ -235,7 +235,7 @@ footer,
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    margin-top: 120px !important;  /* Added top spacing */
+    margin-top: 100px !important;  /* Added top spacing */
 
 }
 
@@ -342,7 +342,7 @@ main {
 }
 
 h2 {
-    font-family: Herculanum, "Trebuchet MS", Arial, sans-serif;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     font-weight: 100;
     font-size: 1.5rem;
     color: transparent;
@@ -485,8 +485,8 @@ p {
 }
 
 .dictionary-definition h2 {
-    font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
-    font-size: 2rem;  /* Adjust size as needed */
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-size: 3rem;  /* Adjust size as needed */
     margin-bottom: 0.5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

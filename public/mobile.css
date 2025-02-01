@@ -33,9 +33,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        padding: 0.8rem !important;
         width: 100%;
         box-sizing: border-box;
+        gap: 30px !important;
     }
 
     /* More specific selectors for header title */
@@ -45,19 +46,30 @@
     h1.site-title,
     a.title-button h1 {
         font-family: Trattatello !important;
-        font-size: 2.6rem !important;
+        font-size: 100% !important;
         -webkit-font-smoothing: antialiased !important;
         -moz-osx-font-smoothing: grayscale !important;
         font-weight: normal !important;
         letter-spacing: 0.05em !important;
+        margin-right: auto !important;
+        white-space: nowrap !important;
+        padding-left: 0.8rem !important;
     }
 
-    /* Ensure proper spacing between title and button */
+    /* Adjust about button */
     .about-button {
-        margin-left: 1rem;
-        flex-shrink: 0;  /* Prevent button from shrinking */
-        font-weight: 400;  /* Normal weight for better readability */
+        margin-left: auto !important;
+        margin-right: 0.4rem !important;  /* Reduced right margin */
+        padding-right: 0 !important;  /* Remove right padding */
+        position: relative !important;
+        right: 0rem !important;  /* Move button slightly right */
+        flex-shrink: 0;
+        font-weight: 400;
         letter-spacing: 0;
+        width: 65px !important;
+        height: 35px !important;
+        padding: 6px 10px !important;
+        font-size: 0.75rem !important;
     }
 
     /* Remove any inherited margins */
@@ -99,17 +111,13 @@
     .about-button {
         width: 100px;
         height: 60px;
+        width: 100%;
         padding: 15px 20px;
-        margin-right: 0;  /* Remove right margin */
         font-size: 0.9rem;  /* Slightly smaller font */
         letter-spacing: 1;  /* Remove letter spacing */
         white-space: nowrap;  /* Prevent text wrapping */
         font-weight: 400;  /* Normal weight instead of bold */
         font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-    }
-
-    .close-button {
-        display: none;  /* Hide close button on mobile */
     }
 
 
@@ -165,36 +173,49 @@
     .trading-content-container p {
         font-size: 0.9rem;  /* Also reduce paragraph text size */
         line-height: 1.4;
-        padding: 0 1rem;
     }
 
     .photography-content-section,
     .software-content-section,
     .trading-content-section {
         width: 90%;
-        margin: 0 auto;
+        margin: 2px auto 0 !important;
+        min-height: auto !important;  /* Remove minimum height */
+        height: auto !important;  /* Let content determine height */
     }
 
     .photography-content-container,
     .software-content-container,
     .trading-content-container {
         background-color: rgba(20, 20, 20, 0.8);  /* Keep the dark background */
-        padding: 2rem;
-        margin: 1rem auto;
+        padding: 0.5rem !important;
+        margin-bottom: 1rem !important;  /* Add small bottom margin */
         border-radius: 4px;
         width: 100%;
         box-sizing: border-box;
     }
-
-    .photography-section-header,
-    .software-section-header,
-    .trading-section-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0;
-        margin-bottom: 1.5rem;
-    }
+/* Section headers styling */
+.photography-section-header,
+.software-section-header,
+.trading-section-header,
+div[class*="-section-header"],
+.section-header {
+    display: flex !important;
+    background-color: rgb(18, 18, 18) !important;
+    align-items: center !important;
+    margin-bottom: 1rem !important;
+    margin-top: 0 !important;
+    padding: 32px 40px !important;
+    border-radius: 5px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    color: #ffffff !important;
+    letter-spacing: 0.05em !important;
+    position: relative !important;  /* Added for absolute positioning context */
+}
 
     .photography-content-container p,
     .software-content-container p,
@@ -204,10 +225,6 @@
         line-height: 1.6;
     }
 
-    .fullscreen-container {
-        padding-top: 0;  /* Remove padding that was for close button */
-    }
-
     /* Apply Futura to all text elements */
     body,
     h1, h2, h3, h4, h5, h6,
@@ -215,7 +232,6 @@
     button,
     .title-button h1,
     .about-button,
-    .close-button,
     .photography-content-container,
     .software-content-container,
     .trading-content-container,
@@ -249,59 +265,6 @@
         font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     }
 
-    /* Hide close button only in fullscreen image view */
-    .fullscreen-container .close-button {
-        display: none;
-    }
-
-    /* Style close button for About popup */
-    .about-popup .close-button {
-        position: absolute;
-        top: 50px;
-        right: 15px;
-        width: 30px;
-        height: 30px;
-        background: none;  /* Remove background */
-        color: #fff;
-        border: 1px solid white;
-        font-size: 24px;
-        cursor: pointer;
-        opacity: 0.7;
-        transition: opacity 0.3s;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        z-index: 2002;
-    }
-
-
-    .close-button {
-        position: absolute;
-        top: 50px;
-        right: 15px;
-        background: white;
-        border: 1px solid white;
-        color: black;
-        font-size: 24px;
-        cursor: pointer;
-        background-image: linear-gradient(
-            45deg,
-            rgba(255, 255, 255, 0.8) 25%,
-            rgba(255, 255, 255, 0.95) 50%,
-            rgba(255, 255, 255, 0.8) 75%
-        );
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-        text-align: center;
-    }
-
-    .about-popup .close-button:hover {
-        opacity: 1;
-        background: none;  /* Remove hover background */
-    }
-
     .about-content {
         padding: 2rem;
         padding-bottom: 4rem;
@@ -313,7 +276,7 @@
 
     /* Adjust text sizes in About popup */
     .about-content h2 {
-        font-size: 1.3rem;
+        font-size: 1.0rem;
         margin-bottom: 1rem;
     }
 
@@ -323,8 +286,8 @@
     }
 
     .dictionary-definition h2 {
-        font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
-        font-size: 1.6rem;
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        font-size: 2rem;
         margin-bottom: 0.5rem;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -347,6 +310,166 @@
     html {
         -webkit-text-size-adjust: 100%;
     }
+
+    /* Apply to entire body for consistent font rendering */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Adjust h2 alignment in section headers for mobile */
+    .photography-section-header h2,
+    .software-section-header h2,
+    .trading-section-header h2 {
+        font-size: 1.5rem !important;
+        margin: 0 !important;
+        padding-right: 35px !important;
+        text-align: left !important;
+        flex: 1 !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /* Adjust section header padding */
+    .photography-section-header,
+    .software-section-header,
+    .trading-section-header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 16px 20px !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    /* Header text styling */
+    .photography-section-header h2,
+    .software-section-header h2,
+    .trading-section-header h2 {
+        width: 100% !important;
+        font-size: 2rem !important;
+        margin: 0 !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+
+    /* Logo container positioning */
+    .instagram-logo-container,
+    .github-logo-container,
+    .x-logo-container {
+        position: relative !important;
+        right: auto !important;
+        align-self: flex-end !important;
+    }
+
+    /* Logo sizing */
+    .instagram-logo,
+    .github-logo,
+    .x-logo {
+        width: 30px !important;
+        height: 30px !important;
+        position: relative !important;
+        right: 0 !important;
+        transform: none !important;
+    }
+
+    /* Section headers and h2 alignment */
+    .photography-section-header h2,
+    .software-section-header h2,
+    .trading-section-header h2 {
+        font-size: 1.5rem !important;
+        margin: 0 !important;
+        padding-right: 35px !important;
+        text-align: left !important;
+        flex: 1 !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /* Section header structure */
+    .photography-section-header,
+    .software-section-header,
+    .trading-section-header,
+    [class*="-section-header"] {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 16px 20px !important;
+        margin-bottom: 0.25rem !important;
+        overflow: visible !important;
+        position: relative !important;  /* For absolute positioning context */
+    }
+
+    /* Logo container positioning */
+    .instagram-logo-container,
+    .github-logo-container,
+    .x-logo-container,
+    [class*="-logo-container"] {
+        position: absolute !important;
+        right: 20px !important;  /* Align with section padding */
+        top: 50% !important;  /* Center vertically */
+        transform: translateY(-50%) !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* Logo sizing and positioning */
+    .instagram-logo,
+    .github-logo,
+    .x-logo,
+    [class*="-logo"] {
+        width: 25px !important;
+        height: 25px !important;
+    }
+
+    /* Content sections */
+    .photography-content-section, 
+    .software-content-section, 
+    .trading-content-section {
+        margin: 3rem auto !important;  /* Consistent margin between sections */
+        padding: 0 !important;
+    }
+
+    /* Content containers */
+    .photography-content-container, 
+    .software-content-container, 
+    .trading-content-container {
+        padding: 1rem !important;
+    }
+
+    /* Text within containers */
+    .photography-content-container p, 
+    .software-content-container p, 
+    .trading-content-container p,
+    [class*="-content-container"] p {
+        margin: 0.75rem 0 !important;
+        line-height: 1.5 !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Content wrappers */
+    .photography-content-wrapper,
+    .software-content-wrapper,
+    .trading-content-wrapper {
+        min-height: auto !important;
+        height: auto !important;
+        position: relative !important;
+        margin-top: 1rem !important;
+    }
+
+    /* Special GitHub logo positioning */
+.software-section-header .github-logo-container {
+    right: -10px !important;  /* Move GitHub logo more to the right */
+}
+
+    /* Image grid spacing */
+    .image-grid,
+    .image-grid-two,
+    .image-grid-three,
+    .image-grid-four {
+        margin: 2rem auto !important;  /* Match container spacing */
+        gap: 0.5rem !important;
+    }
 }
 
 
@@ -360,32 +483,19 @@ Extra small devices (phones under 480px)
 
 @media (max-width: 480px) {
     header {
-        padding: 0.8rem;
+        padding: 0.8rem !important;
     }
 
     header .title-button h1,
     header h1,
     .title-button h1 {
-        font-size: 2.2rem !important;
-        transform: scale(1, 1.05) !important; /* Slightly less stretch for smaller screens */
+        padding-left: 0.8rem !important;  /* Match container padding */
     }
 
     .about-button {
-        width: 90px;
-        height: 50px;
-        padding: 12px 15px;
-        font-size: 0.85rem;  /* Even smaller for very small screens */
-        letter-spacing: -0.5px;  /* Tighten letter spacing if needed */
-        font-weight: 400;  /* Ensure normal weight on smaller screens */
+        margin-right: 0.8rem !important;  /* Match container padding */
     }
-
-    .close-button {
-        width: 60px;
-        height: 60px;
-        padding: 15px;
-        font-size: 1rem;
-    }
-
+    
     .image-caption {
         font-size: 0.8rem;  /* Even smaller for phones */
         padding: 0.6rem 0.4rem;
@@ -430,17 +540,15 @@ Extra small devices (phones under 480px)
         margin-top: 1.5rem;  /* Adjusted for smaller screens */
     }
 
-    .about-content h2 {
-        font-size: 1.2rem;
-    }
-
     .about-content p {
         font-size: 0.85rem;
     }
 
-    .dictionary-definition h2 {
-        font-size: 1.4rem;  /* Even smaller for very small screens */
+    /* Special GitHub logo positioning */
+    .software-section-header .github-logo-container {
+        right: -10px !important;  /* Move GitHub logo more to the right */
     }
+
 }
 
 /* 
@@ -457,12 +565,17 @@ Extra small devices
         padding: 0.5rem 0.3rem;
     }
 
+    header .title-button h1,
+    header h1,
+    .title-button h1 {
+        font-size: 1.6rem !important;
+    }
+
     .about-button {
-        width: 80px;
-        height: 45px;
-        padding: 10px 12px;
-        font-size: 0.8rem;
-        font-weight: 400;  /* Maintain normal weight on smallest screens */
+        width: 65px !important;
+        height: 35px !important;
+        padding: 6px 10px !important;
+        font-size: 0.75rem !important;
     }
 
     .photography-section-header h2,
@@ -473,9 +586,3 @@ Extra small devices
     }
 
 }
-
-/* Apply to entire body for consistent font rendering */
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-} 
