@@ -24,6 +24,7 @@ body {
 /* Full width header */
 header {
     background-color: #F5F5F5 !important;
+    max-height: 90px !important;
     padding: 20px 40px !important;
     width: 100% !important;  /* Full width */
     box-sizing: border-box !important;  /* Include padding in width */
@@ -88,6 +89,12 @@ section {
     display: block !important;
 }
 
+/* Title positioning */
+header .title-button {
+    margin-left: -2px !important;  /* Pull left */
+    padding-left: 0 !important;
+}
+
 header h1,
 header .title-button h1,
 .title-button h1,
@@ -117,8 +124,7 @@ article p {
 }
 
 .title-button h1 {
-    margin: 0;
-    font-size: 1.5rem;
+    font-size: 200% !important;
     font-weight: 300;
     font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
     text-rendering: optimizeLegibility; /* Add for iOS font optimization */
