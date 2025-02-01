@@ -193,7 +193,7 @@ header .title-button {
     .photography-content-container,
     .software-content-container,
     .trading-content-container {
-        background-color: rgba(20, 20, 20, 0.8);  /* Keep the dark background */
+        background-color: #F5F5F5;  /* Keep the dark background */
         padding: 0.5rem !important;
         margin-bottom: 1rem !important;  /* Add small bottom margin */
         border-radius: 4px;

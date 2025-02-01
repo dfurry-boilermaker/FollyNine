@@ -688,7 +688,7 @@ button[class*="close"],
     padding: 2rem;
     color: rgba(255, 255, 255, 0.9);
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-    background-color: rgba(26, 26, 26, 0.95);
+    background-color: #F5F5F5;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     position: relative;
@@ -708,6 +708,7 @@ button[class*="close"],
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    color: #000000;
     text-align: left;
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;  /* Added Futura font */
 }
@@ -879,7 +880,7 @@ button[class*="close"],
 div[class*="-section-header"],
 .section-header {
     display: flex !important;
-    background-color: rgb(18, 18, 18) !important;
+    background-color: rgb(26, 26, 26) !important;
     align-items: center !important;
     margin-bottom: 1rem !important;
     margin-top: 0 !important;
