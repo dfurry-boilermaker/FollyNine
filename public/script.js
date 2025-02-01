@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const fullscreenContainer = document.createElement('div');
     fullscreenContainer.className = 'fullscreen-container';
     
-    // Add close button
+    // Add close button with updated format
     const closeButton = document.createElement('button');
     closeButton.className = 'close-button';
-    closeButton.textContent = 'x';
+    closeButton.textContent = 'x'; 
     
     // Add image container
     const imageContainer = document.createElement('div');

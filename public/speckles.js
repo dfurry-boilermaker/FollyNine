@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             position: 'absolute',
             width: `${size}px`,
             height: `${size}px`,
-            backgroundColor: 'white',
+            backgroundColor: '#ffffff',
             borderRadius: '50%',
             transition: 'transform 1.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease',
             transform: `translate3d(${Math.random() * 100 - 50}px, -100vh, 0)`,
