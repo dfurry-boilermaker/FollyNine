@@ -9,7 +9,7 @@
 body {
     margin: 0 !important;  /* Remove body margin */
     padding: 0;
-    background-color: #121c11 !important;  /* New darker green */
+    background-color: #152514 !important;
     min-height: 300vh;  /* Increased from 200vh to 300vh */
     position: relative;
     overflow-x: hidden;
