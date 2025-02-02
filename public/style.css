@@ -25,7 +25,7 @@ body {
 header {
     background-color: #FAF9F6 !important;
     max-height: 90px !important;
-    padding: 20px 40px !important;
+    padding: 15px 40px !important;
     width: 100% !important;  /* Full width */
     box-sizing: border-box !important;  /* Include padding in width */
     margin: 0 !important;  /* Remove margin */
@@ -34,7 +34,8 @@ header {
     overflow: hidden !important;  /* Ensure the radius is respected */
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;  /* Align to start */
+    position: relative !important;  /* For absolute positioning context */
 }
 
 /* Content wrapper - transparent */
@@ -89,19 +90,6 @@ section {
     display: block !important;
 }
 
-/* Title positioning */
-header .title-button {
-    margin-left: -2px !important;  /* Pull left */
-    padding-left: 0 !important;
-}
-
-header h1,
-header .title-button h1,
-.title-button h1,
-h1.site-title {
-    color: #000000 !important;
-    text-shadow: none !important;
-}
 
 /* Text color for content */
 .text-section p,
@@ -119,72 +107,6 @@ article p {
     transition: transform 0.2s ease;
 }
 
-.title-button:hover {
-    transform: scale(1.05);
-}
-
-.title-button h1 {
-    font-size: 200% !important;
-    font-weight: 300;
-    font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
-    text-rendering: optimizeLegibility; /* Add for iOS font optimization */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-h1 {
-    margin: 0;
-    text-align: left;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    font-family: Trattatello, "Trebuchet MS", Arial, sans-serif;
-    font-weight: 100;
-    text-rendering: optimizeLegibility; /* Add for iOS font optimization */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    position: relative;
-}
-
-
-section {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.project-list {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.project-item {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-}
-
-form input, form textarea {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 80%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form button {
-    padding: 10px 20px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 /* Footer styling */
 footer,
@@ -697,24 +619,6 @@ h2 {
     }
 }
 
-/* @media screen and (max-width: 768px) {
-    .image-grid {
-        grid-template-columns: repeat(2, 1fr);
-        width: 95%;
-        gap: 1.5rem;
-        padding: 1rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .image-grid {
-        grid-template-columns: 1fr;
-        width: 95%;
-        gap: 1rem;
-        padding: 1rem;
-    }
-} */
-
 /* Responsive text sections */
 @media screen and (min-width: 1921px) {
     .content-container {
@@ -734,35 +638,6 @@ h2 {
     }
 }
 
-@media screen and (max-width: 768px) {
-    .content-container {
-        width: 95%;
-        padding: 1rem;
-    }
-    header {
-        padding-right: 50px;
-        width: calc(100% - 100px);
-    }
-    
-    .about-button {
-        right: 50px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .content-container {
-        width: 95%;
-        padding: 1rem;
-    }
-    header {
-        padding-right: 60px;
-        width: calc(100% - 120px);
-    }
-    
-    .about-button {
-        right: 60px;
-    }
-}
 
 /* Content sections - ensure they start after ALL images */
 .photography-content-sections-wrapper, .software-content-sections-wrapper, .trading-content-sections-wrapper {
@@ -773,20 +648,6 @@ h2 {
     width: 100%;
 }
 
-/* Media query for smaller screens */
-@media screen and (max-width: 768px) {
-    .mid-position {
-        top: calc(150vh + 600px);  /* More space for stacked images */
-    }
-    
-    .bottom-position {
-        top: calc(300vh + 1200px);  /* More space for stacked images */
-    }
-    
-    .content-sections-wrapper {
-        margin-top: calc(450vh + 1800px);  /* Even more space before content */
-    }
-}
 
 .photography-content-section, .software-content-section, .trading-content-section {  /* New shared class */
     position: relative;
@@ -894,6 +755,17 @@ img[src*="x-logo"] {
     z-index: 2001;
 }
 
+/* Logo styling */
+.site-logo {
+    display: block !important;
+    width: 100px !important;
+    height: 45px !important;
+    object-fit: contain !important;
+    position: absolute !important;  /* Change to absolute positioning */
+    left: 40px !important;  /* Position from left edge */
+    top: 50% !important;
+}
+
 /* Set Futura as default font for entire site */
 * {
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
@@ -901,12 +773,6 @@ img[src*="x-logo"] {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Mobile adjustments if needed */
-@media (max-width: 768px) {
-    .dictionary-definition h2 {
-        font-size: 1.6rem;  /* Slightly smaller on mobile */
-    }
-}
 
 /* Add border radius to all images */
 img {
@@ -937,3 +803,8 @@ body.popup-active {
     height: 100% !important;
 }
 
+.title-button {
+    display: flex !important;
+    align-items: center !important;
+    position: relative !important;
+}
