@@ -77,16 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.remove('no-scroll');
         }
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
     const speckleContainer = document.querySelector('.speckle-container');
     
     if (speckleContainer) {
-        speckleContainer.style.zIndex = "9999";
-        
-        setTimeout(() => {
-            speckleContainer.style.zIndex = "-1";
-        }, 3000);
+        speckleContainer.style.zIndex = "-9999";  // Adjust this number
     }
-}); 
+});

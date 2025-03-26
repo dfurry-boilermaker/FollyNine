@@ -155,15 +155,8 @@ footer a:hover,
 }
 
 .speckle-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 99999; /* Increased even higher */
-    background-color: transparent;
-    transition: all 0.5s ease-in-out;
+    z-index: -9999 !important;
+    position: fixed !important;
 }
 
 /* Target every possible speckle */
@@ -203,21 +196,6 @@ canvas[class*="speckle"],
     transition: opacity 0.2s ease;
 }
 
-@keyframes float {
-    0% { transform: translate(0, 0); }
-    25% { transform: translate(10px, 10px); }
-    50% { transform: translate(-5px, 15px); }
-    75% { transform: translate(-10px, -5px); }
-    100% { transform: translate(0, 0); }
-}
-
-/* @keyframes vibrate {
-    0% { transform: translate(0, 0); }
-    25% { transform: translate(2px, 2px); }
-    50% { transform: translate(-2px, -2px); }
-    75% { transform: translate(-2px, 2px); }
-    100% { transform: translate(2px, -2px); }
-} */
 
 main {
     position: relative;
@@ -807,4 +785,13 @@ body.popup-active {
     display: flex !important;
     align-items: center !important;
     position: relative !important;
+}
+
+/* Ensure content stays above speckles */
+.content-wrapper,
+.photography-content-section,
+.software-content-section,
+.trading-content-section {
+    position: relative !important;
+    z-index: 1 !important;
 }

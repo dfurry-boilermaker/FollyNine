@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     container.style.left = '0';
     container.style.width = '100%';
     container.style.height = '300vh';
-    container.style.zIndex = '9999';
+    container.style.zIndex = '-1';
     container.style.pointerEvents = 'none';
     document.body.appendChild(container);
     
@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial animation and transition
     animateSpecklesIn();
-    setTimeout(transitionSpecklesBehind, 3000);
     
     // Start the continuous animation
     requestAnimationFrame(animate);
@@ -81,28 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 speckle.element.style.transform = 'translate3d(0, 0, 0)';
             }, Math.random() * 1000);
         });
-    }
-    
-    function transitionSpecklesBehind() {
-        // First fade out
-        speckles.forEach(speckle => {
-            speckle.element.style.transition = 'opacity 0.5s ease';
-            speckle.element.style.opacity = '0';
-        });
-        
-        // Move behind and fade back in
-        setTimeout(() => {
-            container.style.zIndex = '-1';
-            speckles.forEach(speckle => {
-                // Only transition the opacity, let the animation loop handle movement
-                speckle.element.style.transition = 'opacity 2s cubic-bezier(0.4, 0, 0.2, 1)';
-                speckle.element.style.opacity = '1';
-                
-                // Adjust the base position instead of using transform
-                speckle.baseLeft += Math.random() * 50 - 25;
-                speckle.baseTop += Math.random() * 50 + 50;
-            });
-        }, 500);
     }
     
     // Animation loop
