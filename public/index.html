@@ -18,6 +18,10 @@
     
     <!-- Vercel Analytics and Speed Insights -->
     <!-- Manual initialization for static HTML sites -->
+    <!-- Initialize queue immediately -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
     <script src="/analytics-init.js"></script>
 
 </head>

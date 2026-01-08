@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vercel Analytics Debug</title>
+</head>
+<body>
+    <h1>Vercel Analytics Debug Page</h1>
+    <div id="results"></div>
+    <script>
+        const results = document.getElementById('results');
+        
+        function addResult(message, status) {
+            const div = document.createElement('div');
+            div.style.padding = '10px';
+            div.style.margin = '5px';
+            div.style.border = '1px solid #ccc';
+            div.innerHTML = `<strong>${status}:</strong> ${message}`;
+            results.appendChild(div);
+        }
+        
+        // Test 1: Check if analytics queue exists
+        if (window.va) {
+            addResult('Analytics queue (window.va) exists', '✓');
+        } else {
+            addResult('Analytics queue (window.va) does NOT exist', '✗');
+        }
+        
+        // Test 2: Try to load analytics script
+        const script = document.createElement('script');
+        script.src = '/_vercel/insights/script.js';
+        script.onload = function() {
+            addResult('Analytics script loaded successfully from /_vercel/insights/script.js', '✓');
+        };
+        script.onerror = function() {
+            addResult('Failed to load /_vercel/insights/script.js (404 or other error)', '✗');
+            addResult('This means analytics is likely not enabled in Vercel dashboard', '⚠');
+        };
+        document.head.appendChild(script);
+        
+        // Test 3: Check hostname
+        addResult('Current hostname: ' + window.location.hostname, 'INFO');
+        
+        // Test 4: Check for vercel packages
+        fetch('/package.json')
+            .then(r => r.json())
+            .then(data => {
+                if (data.dependencies && data.dependencies['@vercel/analytics']) {
+                    addResult('@vercel/analytics found in package.json: ' + data.dependencies['@vercel/analytics'], '✓');
+                } else {
+                    addResult('@vercel/analytics NOT found in package.json', '✗');
+                }
+            })
+            .catch(() => {
+                addResult('Could not fetch package.json', '⚠');
+            });
+        
+        // Test 5: Check network requests after 2 seconds
+        setTimeout(() => {
+            const networkEntries = performance.getEntriesByType('resource');
+            const insightsRequests = networkEntries.filter(e => e.name.includes('insights'));
+            if (insightsRequests.length > 0) {
+                addResult('Found ' + insightsRequests.length + ' insights-related network requests', '✓');
+                insightsRequests.forEach(req => {
+                    addResult('Request: ' + req.name + ' (Status: ' + (req.responseStatus || 'unknown') + ')', 'INFO');
+                });
+            } else {
+                addResult('No insights-related network requests found', '✗');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
