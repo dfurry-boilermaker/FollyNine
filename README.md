@@ -19,3 +19,10 @@ budgets, and the static build. Browser checks should also cover keyboard opening
 Escape and Close, focus restoration, backdrop clicks, and short phone screens.
 After deployment, run `npm run test:live -- https://follynine.com` to verify that
 the live home page and assets match the checkout and unknown URLs return HTTP 404.
+
+The responsive layout lives in `public/style.css`. Navigation anchors use the
+measured header height to keep section headings visible below the sticky menu.
+The background uses one canvas with 60 particles on phones and 180 on wider
+screens, draws at up to 30 fps, pauses in hidden tabs, and stays static when the
+visitor enables reduced motion. Search and social metadata use the existing
+biography and F9 image.

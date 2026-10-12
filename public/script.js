@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.site-header');
+    const updateHeaderHeight = () => {
+        document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+    };
+    updateHeaderHeight();
+    new ResizeObserver(updateHeaderHeight).observe(header);
+
     const aboutButton = document.querySelector('.about-button');
     const aboutDialog = document.getElementById('aboutPopup');
     const photoDialog = document.getElementById('photoViewer');

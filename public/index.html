@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folly Nine</title>
+    <title>Folly Nine | Photography, Software Engineering &amp; Trading</title>
+    <meta name="description" content="Photography, software engineering, and trading by Daniel Furry. Explore original photos and the story behind Folly Nine.">
+    <meta name="author" content="Daniel Furry">
+    <link rel="canonical" href="https://follynine.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Folly Nine">
+    <meta property="og:title" content="Folly Nine | Photography, Software Engineering &amp; Trading">
+    <meta property="og:description" content="Photography, software engineering, and trading by Daniel Furry. Explore original photos and the story behind Folly Nine.">
+    <meta property="og:url" content="https://follynine.com/">
+    <meta property="og:image" content="https://follynine.com/images/F9.jpeg">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="F9 keyboard key">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Folly Nine | Photography, Software Engineering &amp; Trading">
+    <meta name="twitter:description" content="Photography, software engineering, and trading by Daniel Furry. Explore original photos and the story behind Folly Nine.">
+    <meta name="twitter:image" content="https://follynine.com/images/F9.jpeg">
+    <meta name="twitter:image:alt" content="F9 keyboard key">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile.css">
-    <link rel="stylesheet" href="interactions.css">
-    <script src="viewport.js" defer></script>
     <script src="speckles.js" defer></script>
     <script src="scroll.js" defer></script>
     <script src="script.js" defer></script>
@@ -26,24 +40,32 @@
 
 </head>
 <body>
-    <header>
-        <a href="/" class="title-button">
-            <img src="images/FollyNineLogo.webp" alt="Folly Nine" class="site-logo">
-        </a>
-        <button type="button" class="about-button" aria-haspopup="dialog" aria-controls="aboutPopup">About</button>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="/" class="title-button">
+                <img src="images/FollyNineLogo.webp" alt="Folly Nine" class="site-logo" width="991" height="354">
+            </a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="#photography">Photography</a>
+                <a href="#software">Software Engineering</a>
+                <a href="#trading">Trading</a>
+                <button type="button" class="about-button" aria-haspopup="dialog" aria-controls="aboutPopup">About</button>
+            </nav>
+        </div>
     </header>
     <div class="progress-container">
         <div class="progress-bar"></div>
     </div>
 
     <div class="content-wrapper">
-        <div class="main-page-wrapper" role="main" aria-label="Folly Nine">
+        <main id="main-content" class="main-page-wrapper" tabindex="-1">
 
             <div class="image-grid">
                 <button type="button" class="image-container" aria-label="View Fred Again.." aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/1-480.webp"
                          srcset="/images/previews/1-480.webp 480w, /images/previews/1-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/1.webp" alt="Fred Again.."
                          width="2712" height="3618" loading="eager" decoding="async" fetchpriority="high">
                     <span class="image-caption">Fred Again..</span>
@@ -51,7 +73,7 @@
                 <button type="button" class="image-container" aria-label="View Chicago Gold Coast" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/2-480.webp"
                          srcset="/images/previews/2-480.webp 480w, /images/previews/2-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/2.webp" alt="Chicago Gold Coast"
                          width="3072" height="4608" loading="eager" decoding="async">
                     <span class="image-caption">Chicago Gold Coast</span>
@@ -59,7 +81,7 @@
                 <button type="button" class="image-container" aria-label="View Lake Michigan Sunrise" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/3-480.webp"
                          srcset="/images/previews/3-480.webp 480w, /images/previews/3-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/3.webp" alt="Lake Michigan Sunrise"
                          width="4558" height="3038" loading="eager" decoding="async">
                     <span class="image-caption">Lake Michigan Sunrise</span>
@@ -67,7 +89,7 @@
                 <button type="button" class="image-container" aria-label="View Folly VIII" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/4-480.webp"
                          srcset="/images/previews/4-480.webp 480w, /images/previews/4-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/4.webp" alt="Folly VIII"
                          width="3024" height="4032" loading="eager" decoding="async">
                     <span class="image-caption">Folly VIII</span>
@@ -75,7 +97,7 @@
                 <button type="button" class="image-container" aria-label="View Duck Taking Flight" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/5-480.webp"
                          srcset="/images/previews/5-480.webp 480w, /images/previews/5-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/5.webp" alt="Duck Taking Flight"
                          width="3072" height="4608" loading="lazy" decoding="async">
                     <span class="image-caption">Duck Taking Flight</span>
@@ -83,7 +105,7 @@
                 <button type="button" class="image-container" aria-label="View Vegatation in the City" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/6-480.webp"
                          srcset="/images/previews/6-480.webp 480w, /images/previews/6-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/6.webp" alt="Vegatation in the City"
                          width="3024" height="4032" loading="lazy" decoding="async">
                     <span class="image-caption">Vegatation in the City</span>
@@ -91,7 +113,7 @@
                 <button type="button" class="image-container" aria-label="View Porsche 911" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/7-480.webp"
                          srcset="/images/previews/7-480.webp 480w, /images/previews/7-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/7.webp" alt="Porsche 911"
                          width="3024" height="4032" loading="lazy" decoding="async">
                     <span class="image-caption">Porsche 911</span>
@@ -99,20 +121,21 @@
                 <button type="button" class="image-container" aria-label="View London, England" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/8-480.webp"
                          srcset="/images/previews/8-480.webp 480w, /images/previews/8-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/8.webp" alt="London, England"
                          width="3006" height="4009" loading="lazy" decoding="async">
                     <span class="image-caption">London, England</span>
                 </button>
             </div>
 
-            <section class="photography-content-section">
+            <section class="photography-content-section" id="photography" aria-labelledby="photography-title" tabindex="-1">
                 <div class="photography-content-container">
-                    <div class="photography-section-header">
-                        <h2>Photography</h2>
+                    <div class="photography-section-header section-header">
+                        <h2 id="photography-title">Photography</h2>
                         <div class="instagram-logo-container">
-                            <a href="https://www.instagram.com/dave.folly" class="section-instagram-link" target="_blank" rel="noopener noreferrer">
-                                <img src="/images/insta_logo.jpg" alt="insta Logo" class="instagram-logo">
+                            <a href="https://www.instagram.com/dave.folly" class="section-instagram-link social-link" target="_blank" rel="noopener noreferrer">
+                                <img src="/images/insta_logo.jpg" alt="" class="instagram-logo" width="24" height="24" aria-hidden="true">
+                                <span>Instagram</span>
                             </a>
                         </div>
                     </div>
@@ -127,7 +150,7 @@
                 <button type="button" class="image-container" aria-label="View Isla Taboga, Panamá" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/9-480.webp"
                          srcset="/images/previews/9-480.webp 480w, /images/previews/9-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/9.webp" alt="Isla Taboga, Panamá"
                          width="2565" height="3353" loading="lazy" decoding="async">
                     <span class="image-caption">Isla Taboga, Panamá</span>
@@ -135,7 +158,7 @@
                 <button type="button" class="image-container" aria-label="View Seagull in San Francisco" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/10-480.webp"
                          srcset="/images/previews/10-480.webp 480w, /images/previews/10-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/10.webp" alt="Seagull in San Francisco"
                          width="3024" height="4032" loading="lazy" decoding="async">
                     <span class="image-caption">Seagull in San Francisco</span>
@@ -143,7 +166,7 @@
                 <button type="button" class="image-container" aria-label="View Lower Manhattan" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/11-480.webp"
                          srcset="/images/previews/11-480.webp 480w, /images/previews/11-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/11.webp" alt="Lower Manhattan"
                          width="2753" height="3942" loading="lazy" decoding="async">
                     <span class="image-caption">Lower Manhattan</span>
@@ -151,20 +174,21 @@
                 <button type="button" class="image-container" aria-label="View Skin on Skin in Brooklyn" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/12-480.webp"
                          srcset="/images/previews/12-480.webp 480w, /images/previews/12-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/12.webp" alt="Skin on Skin in Brooklyn"
                          width="3024" height="4032" loading="lazy" decoding="async">
                     <span class="image-caption">Skin on Skin in Brooklyn</span>
                 </button>
             </div>
 
-            <section class="software-content-section">
+            <section class="software-content-section" id="software" aria-labelledby="software-title" tabindex="-1">
                 <div class="software-content-container">
-                    <div class="software-section-header">
-                        <h2>Software Engineering</h2>
+                    <div class="software-section-header section-header">
+                        <h2 id="software-title">Software Engineering</h2>
                         <div class="github-logo-container">
-                            <a href="https://github.com/dfurry-boilermaker" class="section-github-link" target="_blank" rel="noopener noreferrer">
-                                <img src="/images/github_logo.jpg" alt="GitHub Logo" class="github-logo">
+                            <a href="https://github.com/dfurry-boilermaker" class="section-github-link social-link" target="_blank" rel="noopener noreferrer">
+                                <img src="/images/github_logo.jpg" alt="" class="github-logo" width="24" height="24" aria-hidden="true">
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
@@ -181,7 +205,7 @@
                 <button type="button" class="image-container" aria-label="View Buenos Aires, Argentina" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/13-480.webp"
                          srcset="/images/previews/13-480.webp 480w, /images/previews/13-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/13.webp" alt="Buenos Aires, Argentina"
                          width="3072" height="4608" loading="lazy" decoding="async">
                     <span class="image-caption">Buenos Aires, Argentina</span>
@@ -189,7 +213,7 @@
                 <button type="button" class="image-container" aria-label="View Fireworks on the 4th of July" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/14-480.webp"
                          srcset="/images/previews/14-480.webp 480w, /images/previews/14-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/14.webp" alt="Fireworks on the 4th of July"
                          width="2780" height="3707" loading="lazy" decoding="async">
                     <span class="image-caption">Fireworks on the 4th of July</span>
@@ -197,7 +221,7 @@
                 <button type="button" class="image-container" aria-label="View Seattle-Tacoma Airport" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/15-480.webp"
                          srcset="/images/previews/15-480.webp 480w, /images/previews/15-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/15.webp" alt="Seattle-Tacoma Airport"
                          width="3072" height="4608" loading="lazy" decoding="async">
                     <span class="image-caption">Seattle-Tacoma Airport</span>
@@ -205,22 +229,21 @@
                 <button type="button" class="image-container" aria-label="View Glass Museum" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/16-480.webp"
                          srcset="/images/previews/16-480.webp 480w, /images/previews/16-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/16.webp" alt="Glass Museum"
                          width="3072" height="4608" loading="lazy" decoding="async">
                     <span class="image-caption">Glass Museum</span>
                 </button>
             </div>
 
-            <section class="trading-content-section">
+            <section class="trading-content-section" id="trading" aria-labelledby="trading-title" tabindex="-1">
                 <div class="trading-content-container">
-                    <div class="trading-section-header">
-                        <div class="trading-header">
-                                <h2>Trading</h2>
-                        </div>
+                    <div class="trading-section-header section-header">
+                        <h2 id="trading-title">Trading</h2>
                         <div class="x-logo-container">
-                            <a href="https://x.com/FollyNine" class="section-twitter-link" target="_blank" rel="noopener noreferrer">
-                                <img src="/images/X_logo.jpg" alt="X Logo" class="x-logo">
+                            <a href="https://x.com/FollyNine" class="section-twitter-link social-link" target="_blank" rel="noopener noreferrer">
+                                <img src="/images/X_logo.jpg" alt="" class="x-logo" width="24" height="24" aria-hidden="true">
+                                <span>X</span>
                             </a>
                         </div>
                     </div>
@@ -238,7 +261,7 @@
                 <button type="button" class="image-container" aria-label="View Salt Lake City, Utah" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/17-480.webp"
                          srcset="/images/previews/17-480.webp 480w, /images/previews/17-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/17.webp" alt="Salt Lake City, Utah"
                          width="3072" height="4608" loading="lazy" decoding="async">
                     <span class="image-caption">Salt Lake City, Utah</span>
@@ -246,7 +269,7 @@
                 <button type="button" class="image-container" aria-label="View McDonalds in Barcelona" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/18-480.webp"
                          srcset="/images/previews/18-480.webp 480w, /images/previews/18-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/18.webp" alt="McDonalds in Barcelona"
                          width="3024" height="4032" loading="lazy" decoding="async">
                     <span class="image-caption">McDonalds in Barcelona</span>
@@ -254,7 +277,7 @@
                 <button type="button" class="image-container" aria-label="View Nice, France" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/19-480.webp"
                          srcset="/images/previews/19-480.webp 480w, /images/previews/19-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/19.webp" alt="Nice, France"
                          width="3024" height="4032" loading="lazy" decoding="async">
                     <span class="image-caption">Nice, France</span>
@@ -262,14 +285,14 @@
                 <button type="button" class="image-container" aria-label="View Los Cabos, Mexico" aria-haspopup="dialog" aria-controls="photoViewer">
                     <img src="/images/previews/20-480.webp"
                          srcset="/images/previews/20-480.webp 480w, /images/previews/20-960.webp 960w"
-                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1232px) calc((100vw - 104px) / 4), 282px"
                          data-full-src="/images/20.webp" alt="Los Cabos, Mexico"
                          width="3024" height="4032" loading="lazy" decoding="async">
                     <span class="image-caption">Los Cabos, Mexico</span>
                 </button>
             </div>
 
-        </div>
+        </main>
 
         <dialog class="about-popup" id="aboutPopup" aria-label="About Folly Nine">
             <div class="about-content">
@@ -283,7 +306,7 @@
                        "an act of sheer folly"</p>
                 </div>
 
-                <h2>Developed by Daniel Furry [danielfurry22@gmail.com]</h2>
+                <h2>Developed by Daniel Furry [<a href="mailto:danielfurry22@gmail.com">danielfurry22@gmail.com</a>]</h2>
                 <p>You might wonder why anyone would choose "folly" to describe their website. Well, I'm glad you asked… 
                     Folly perfectly captures the essence of this site. In the past, folly has been a term to affectionately describe 
                     things like family cars, sailboats, and even my childhood puppy, a Black Lab Mutt with only three legs. At first
@@ -295,10 +318,11 @@
             </div>
         </dialog>
 
-        <footer>
+    </div>
+
+    <footer>
             <p>2025 Folly Nine. No Rights Reserved. </p>
         </footer>
-    </div>
 
 <dialog class="fullscreen-container" id="photoViewer" aria-labelledby="viewerCaption">
         <div class="fullscreen-image-container">

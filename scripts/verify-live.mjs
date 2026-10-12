@@ -10,7 +10,9 @@ const source = fileURLToPath(new URL('../public/', import.meta.url));
 for (const [path, file] of [
     ['/', 'index.html'],
     ['/script.js', 'script.js'],
-    ['/interactions.css', 'interactions.css'],
+    ['/style.css', 'style.css'],
+    ['/speckles.js', 'speckles.js'],
+    ['/images/F9.jpeg', 'images/F9.jpeg'],
     ['/images/previews/1-480.webp', 'images/previews/1-480.webp'],
     ['/images/previews/20-960.webp', 'images/previews/20-960.webp']
 ]) {
