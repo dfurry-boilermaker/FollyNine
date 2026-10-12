@@ -8,6 +8,7 @@
     "dev": "nodemon app.js",
     "build": "node scripts/build.mjs",
     "test": "node --test",
+    "test:live": "node scripts/verify-live.mjs",
     "images:previews": "node scripts/generate-previews.mjs"
   },
   "keywords": [],
