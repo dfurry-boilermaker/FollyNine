@@ -2,6 +2,10 @@
 .image-grid, .image-grid-two, .image-grid-three, .image-grid-four {
     width: 92%;
     max-width: 1400px;
+    left: auto;
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
     box-sizing: border-box;
     padding: 0;
     gap: 2rem;
