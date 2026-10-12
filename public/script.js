@@ -1,86 +1,68 @@
-// Add fullscreen image viewer functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const fullscreenContainer = document.createElement('div');
-    fullscreenContainer.className = 'fullscreen-container';
-    
-    // Add image container
-    const imageContainer = document.createElement('div');
-    imageContainer.className = 'fullscreen-image-container';
-    
-    fullscreenContainer.appendChild(imageContainer);
-    document.body.appendChild(fullscreenContainer);
-
-    // Add click handlers to all images
-    const images = document.querySelectorAll('.image-container img');
-    images.forEach(img => {
-        img.addEventListener('click', function() {
-            const caption = this.parentElement.querySelector('.image-caption').cloneNode(true);
-            imageContainer.innerHTML = '';
-            const fullscreenImg = this.cloneNode(true);
-            
-            fullscreenImg.addEventListener('click', function(e) {
-                e.stopPropagation();
-                closeFullscreen();
-            });
-            
-            imageContainer.appendChild(fullscreenImg);
-            imageContainer.appendChild(caption);
-            fullscreenContainer.style.display = 'flex';
-            document.body.classList.add('no-scroll');
-        });
-    });
-
-    // Close handler for fullscreen
-    fullscreenContainer.addEventListener('click', function(e) {
-        if (e.target === fullscreenContainer) {
-            closeFullscreen();
-        }
-    });
-
-    // Add click handler for about section
+document.addEventListener('DOMContentLoaded', () => {
     const aboutButton = document.querySelector('.about-button');
-    const aboutPopup = document.querySelector('.about-popup');
+    const aboutDialog = document.getElementById('aboutPopup');
+    const photoDialog = document.getElementById('photoViewer');
+    const viewerImage = document.getElementById('viewerImage');
+    const viewerCaption = document.getElementById('viewerCaption');
+    const viewerCounter = document.getElementById('viewerCounter');
+    const photos = [...document.querySelectorAll('button.image-container')];
+    let currentPhoto = 0;
+    let openingControl = null;
+    let scrollPosition = 0;
 
-    if (aboutButton && aboutPopup) {
-        aboutButton.addEventListener('click', function(e) {
-            e.stopPropagation();
-            aboutPopup.style.display = 'flex';
-            document.body.classList.add('no-scroll');
+    function openDialog(dialog, trigger) {
+        if (dialog.open) return;
+        openingControl = trigger;
+        scrollPosition = window.scrollY;
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.classList.add('popup-active');
+        document.documentElement.classList.add('modal-open');
+        dialog.showModal();
+    }
+
+    // Native modal dialogs contain keyboard focus and make the page behind them inert.
+    for (const dialog of [aboutDialog, photoDialog]) {
+        dialog.querySelector('[data-close-dialog]').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', event => {
+            if (event.target === dialog) dialog.close();
         });
-
-        // Close about when clicking anywhere in the popup
-        aboutPopup.addEventListener('click', function() {
-            closeAbout();
+        dialog.addEventListener('close', () => {
+            document.body.classList.remove('popup-active');
+            document.documentElement.classList.remove('modal-open');
+            document.body.style.removeProperty('top');
+            window.scrollTo(0, scrollPosition);
+            if (openingControl?.isConnected) openingControl.focus({ preventScroll: true });
+            openingControl = null;
         });
     }
 
-    // Add ESC key handler for both fullscreen and about
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            if (fullscreenContainer.style.display === 'flex') {
-                closeFullscreen();
-            }
-            if (aboutPopup && aboutPopup.style.display === 'flex') {
-                closeAbout();
-            }
-        }
+    aboutButton.addEventListener('click', () => openDialog(aboutDialog, aboutButton));
+
+    function showPhoto(index) {
+        currentPhoto = (index + photos.length) % photos.length;
+        const photo = photos[currentPhoto];
+        const preview = photo.querySelector('img');
+        viewerImage.src = preview.dataset.fullSrc;
+        viewerImage.alt = preview.alt;
+        viewerImage.width = Number(preview.getAttribute('width'));
+        viewerImage.height = Number(preview.getAttribute('height'));
+        viewerCaption.textContent = photo.querySelector('.image-caption').textContent;
+        viewerCounter.textContent = `${currentPhoto + 1} / ${photos.length}`;
+    }
+
+    photos.forEach((photo, index) => {
+        photo.addEventListener('click', () => {
+            showPhoto(index);
+            openDialog(photoDialog, photo);
+        });
     });
 
-    function closeFullscreen() {
-        fullscreenContainer.style.display = 'none';
-        document.body.classList.remove('no-scroll');
-    }
-
-    function closeAbout() {
-        if (aboutPopup) {
-            aboutPopup.style.display = 'none';
-            document.body.classList.remove('no-scroll');
+    document.getElementById('previousPhoto').addEventListener('click', () => showPhoto(currentPhoto - 1));
+    document.getElementById('nextPhoto').addEventListener('click', () => showPhoto(currentPhoto + 1));
+    photoDialog.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            showPhoto(currentPhoto + (event.key === 'ArrowRight' ? 1 : -1));
         }
-    }
-
-    const speckleContainer = document.querySelector('.speckle-container');
-    
-    if (speckleContainer) {
-        speckleContainer.style.zIndex = "-9999";  // Adjust this number
-    }
+    });
 });

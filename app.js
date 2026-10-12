@@ -1,6 +1,6 @@
 import express from 'express';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname, join, resolve } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,11 +19,11 @@ app.use((req, res, next) => {
 });
 
 // Serve static files from public directory
-app.use(express.static('public'));
+app.use(express.static(join(__dirname, 'public')));
 
 // Serve Vercel Analytics packages for browser access
-app.use('/node_modules/@vercel/analytics', express.static('node_modules/@vercel/analytics'));
-app.use('/node_modules/@vercel/speed-insights', express.static('node_modules/@vercel/speed-insights'));
+app.use('/node_modules/@vercel/analytics', express.static(join(__dirname, 'node_modules/@vercel/analytics')));
+app.use('/node_modules/@vercel/speed-insights', express.static(join(__dirname, 'node_modules/@vercel/speed-insights')));
 
 // Main route - serve index.html
 app.get('/', (req, res) => {
@@ -36,8 +36,10 @@ app.use((req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+if (process.argv[1] && resolve(process.argv[1]) === __filename) {
+    app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
 
 export default app;

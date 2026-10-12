@@ -6,11 +6,11 @@
     <title>Folly Nine</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile.css">
-    <script src="viewport.js"></script>
-    <script src="speckles.js"></script>
-    <script src="about.js"></script>
-    <script src="scroll.js"></script>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="interactions.css">
+    <script src="viewport.js" defer></script>
+    <script src="speckles.js" defer></script>
+    <script src="scroll.js" defer></script>
+    <script src="script.js" defer></script>
     
     <link rel="icon" type="image/png" href="/images/F9_icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/images/F9_icon.png">  
@@ -22,7 +22,7 @@
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
-    <script src="/analytics-init.js"></script>
+    <script src="/analytics-init.js" defer></script>
 
 </head>
 <body>
@@ -30,48 +30,80 @@
         <a href="/" class="title-button">
             <img src="images/FollyNineLogo.webp" alt="Folly Nine" class="site-logo">
         </a>
-        <button class="about-button" onclick="toggleAbout()">About</button>
+        <button type="button" class="about-button" aria-haspopup="dialog" aria-controls="aboutPopup">About</button>
     </header>
     <div class="progress-container">
         <div class="progress-bar"></div>
     </div>
 
     <div class="content-wrapper">
-        <div class="main-page-wrapper">
+        <div class="main-page-wrapper" role="main" aria-label="Folly Nine">
 
             <div class="image-grid">
-                <div class="image-container">
-                    <img src="/images/1.webp" alt="Image 1">
-                    <div class="image-caption">Fred Again..</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/2.webp" alt="Image 2">
-                    <div class="image-caption">Chicago Gold Coast</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/3.webp" alt="Image 3">
-                    <div class="image-caption">Lake Michigan Sunrise</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/4.webp" alt="Image 4">
-                    <div class="image-caption">Folly VIII</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/5.webp" alt="Project 5">
-                    <div class="image-caption">Duck Taking Flight</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/6.webp" alt="Project 6">
-                    <div class="image-caption">Vegatation in the City</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/7.webp" alt="Project 7">
-                    <div class="image-caption">Porsche 911</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/8.webp" alt="Project 8">
-                    <div class="image-caption">London, England</div>
-                </div>
+                <button type="button" class="image-container" aria-label="View Fred Again.." aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/1-480.webp"
+                         srcset="/images/previews/1-480.webp 480w, /images/previews/1-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/1.webp" alt="Fred Again.."
+                         width="2712" height="3618" loading="eager" decoding="async" fetchpriority="high">
+                    <span class="image-caption">Fred Again..</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Chicago Gold Coast" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/2-480.webp"
+                         srcset="/images/previews/2-480.webp 480w, /images/previews/2-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/2.webp" alt="Chicago Gold Coast"
+                         width="3072" height="4608" loading="eager" decoding="async">
+                    <span class="image-caption">Chicago Gold Coast</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Lake Michigan Sunrise" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/3-480.webp"
+                         srcset="/images/previews/3-480.webp 480w, /images/previews/3-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/3.webp" alt="Lake Michigan Sunrise"
+                         width="4558" height="3038" loading="eager" decoding="async">
+                    <span class="image-caption">Lake Michigan Sunrise</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Folly VIII" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/4-480.webp"
+                         srcset="/images/previews/4-480.webp 480w, /images/previews/4-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/4.webp" alt="Folly VIII"
+                         width="3024" height="4032" loading="eager" decoding="async">
+                    <span class="image-caption">Folly VIII</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Duck Taking Flight" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/5-480.webp"
+                         srcset="/images/previews/5-480.webp 480w, /images/previews/5-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/5.webp" alt="Duck Taking Flight"
+                         width="3072" height="4608" loading="lazy" decoding="async">
+                    <span class="image-caption">Duck Taking Flight</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Vegatation in the City" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/6-480.webp"
+                         srcset="/images/previews/6-480.webp 480w, /images/previews/6-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/6.webp" alt="Vegatation in the City"
+                         width="3024" height="4032" loading="lazy" decoding="async">
+                    <span class="image-caption">Vegatation in the City</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Porsche 911" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/7-480.webp"
+                         srcset="/images/previews/7-480.webp 480w, /images/previews/7-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/7.webp" alt="Porsche 911"
+                         width="3024" height="4032" loading="lazy" decoding="async">
+                    <span class="image-caption">Porsche 911</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View London, England" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/8-480.webp"
+                         srcset="/images/previews/8-480.webp 480w, /images/previews/8-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/8.webp" alt="London, England"
+                         width="3006" height="4009" loading="lazy" decoding="async">
+                    <span class="image-caption">London, England</span>
+                </button>
             </div>
 
             <section class="photography-content-section">
@@ -92,22 +124,38 @@
             </section>
 
             <div class="image-grid-two">
-                <div class="image-container">
-                    <img src="/images/9.webp" alt="Image 9">
-                    <div class="image-caption">Isla Taboga, Panamá</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/10.webp" alt="Image 10">
-                    <div class="image-caption">Seagull in San Francisco</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/11.webp" alt="Image 11">
-                    <div class="image-caption">Lower Manhattan</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/12.webp" alt="Image 12">
-                    <div class="image-caption">Skin on Skin in Brooklyn</div>
-                </div>
+                <button type="button" class="image-container" aria-label="View Isla Taboga, Panamá" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/9-480.webp"
+                         srcset="/images/previews/9-480.webp 480w, /images/previews/9-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/9.webp" alt="Isla Taboga, Panamá"
+                         width="2565" height="3353" loading="lazy" decoding="async">
+                    <span class="image-caption">Isla Taboga, Panamá</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Seagull in San Francisco" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/10-480.webp"
+                         srcset="/images/previews/10-480.webp 480w, /images/previews/10-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/10.webp" alt="Seagull in San Francisco"
+                         width="3024" height="4032" loading="lazy" decoding="async">
+                    <span class="image-caption">Seagull in San Francisco</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Lower Manhattan" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/11-480.webp"
+                         srcset="/images/previews/11-480.webp 480w, /images/previews/11-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/11.webp" alt="Lower Manhattan"
+                         width="2753" height="3942" loading="lazy" decoding="async">
+                    <span class="image-caption">Lower Manhattan</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Skin on Skin in Brooklyn" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/12-480.webp"
+                         srcset="/images/previews/12-480.webp 480w, /images/previews/12-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/12.webp" alt="Skin on Skin in Brooklyn"
+                         width="3024" height="4032" loading="lazy" decoding="async">
+                    <span class="image-caption">Skin on Skin in Brooklyn</span>
+                </button>
             </div>
 
             <section class="software-content-section">
@@ -130,22 +178,38 @@
             </section>
 
             <div class="image-grid-three">
-                <div class="image-container">
-                    <img src="/images/13.webp" alt="Image 13">
-                    <div class="image-caption">Buenos Aires, Argentina</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/14.webp" alt="Image 14">
-                    <div class="image-caption">Fireworks on the 4th of July</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/15.webp" alt="Image 15">
-                    <div class="image-caption">Seattle-Tacoma Airport</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/16.webp" alt="Image 16">
-                    <div class="image-caption">Glass Museum</div>
-                </div>
+                <button type="button" class="image-container" aria-label="View Buenos Aires, Argentina" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/13-480.webp"
+                         srcset="/images/previews/13-480.webp 480w, /images/previews/13-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/13.webp" alt="Buenos Aires, Argentina"
+                         width="3072" height="4608" loading="lazy" decoding="async">
+                    <span class="image-caption">Buenos Aires, Argentina</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Fireworks on the 4th of July" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/14-480.webp"
+                         srcset="/images/previews/14-480.webp 480w, /images/previews/14-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/14.webp" alt="Fireworks on the 4th of July"
+                         width="2780" height="3707" loading="lazy" decoding="async">
+                    <span class="image-caption">Fireworks on the 4th of July</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Seattle-Tacoma Airport" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/15-480.webp"
+                         srcset="/images/previews/15-480.webp 480w, /images/previews/15-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/15.webp" alt="Seattle-Tacoma Airport"
+                         width="3072" height="4608" loading="lazy" decoding="async">
+                    <span class="image-caption">Seattle-Tacoma Airport</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Glass Museum" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/16-480.webp"
+                         srcset="/images/previews/16-480.webp 480w, /images/previews/16-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/16.webp" alt="Glass Museum"
+                         width="3072" height="4608" loading="lazy" decoding="async">
+                    <span class="image-caption">Glass Museum</span>
+                </button>
             </div>
 
             <section class="trading-content-section">
@@ -171,28 +235,47 @@
             </section>
 
             <div class="image-grid-four">
-                <div class="image-container">
-                    <img src="/images/17.webp" alt="Image 17">
-                    <div class="image-caption">Salt Lake City, Utah</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/18.webp" alt="Image 18">
-                    <div class="image-caption">McDonalds in Barcelona</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/19.webp" alt="Image 19">
-                    <div class="image-caption">Nice, France</div>
-                </div>
-                <div class="image-container">
-                    <img src="/images/20.webp" alt="Image 20">
-                    <div class="image-caption">Los Cabos, Mexico</div>
-                </div>
+                <button type="button" class="image-container" aria-label="View Salt Lake City, Utah" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/17-480.webp"
+                         srcset="/images/previews/17-480.webp 480w, /images/previews/17-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/17.webp" alt="Salt Lake City, Utah"
+                         width="3072" height="4608" loading="lazy" decoding="async">
+                    <span class="image-caption">Salt Lake City, Utah</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View McDonalds in Barcelona" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/18-480.webp"
+                         srcset="/images/previews/18-480.webp 480w, /images/previews/18-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/18.webp" alt="McDonalds in Barcelona"
+                         width="3024" height="4032" loading="lazy" decoding="async">
+                    <span class="image-caption">McDonalds in Barcelona</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Nice, France" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/19-480.webp"
+                         srcset="/images/previews/19-480.webp 480w, /images/previews/19-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/19.webp" alt="Nice, France"
+                         width="3024" height="4032" loading="lazy" decoding="async">
+                    <span class="image-caption">Nice, France</span>
+                </button>
+                <button type="button" class="image-container" aria-label="View Los Cabos, Mexico" aria-haspopup="dialog" aria-controls="photoViewer">
+                    <img src="/images/previews/20-480.webp"
+                         srcset="/images/previews/20-480.webp 480w, /images/previews/20-960.webp 960w"
+                         sizes="(max-width: 768px) calc((100vw - 48px) / 2), (max-width: 1280px) calc((92vw - 96px) / 4), 330px"
+                         data-full-src="/images/20.webp" alt="Los Cabos, Mexico"
+                         width="3024" height="4032" loading="lazy" decoding="async">
+                    <span class="image-caption">Los Cabos, Mexico</span>
+                </button>
             </div>
 
         </div>
 
-        <div class="about-popup" id="aboutPopup">
+        <dialog class="about-popup" id="aboutPopup" aria-label="About Folly Nine">
             <div class="about-content">
+                <div class="about-dialog-toolbar">
+                    <button type="button" class="dialog-button close-button" data-close-dialog autofocus>Close</button>
+                </div>
                 <div class="dictionary-definition">
                     <h2>folly</h2>
                     <p class="definition-type">noun · /ˈfälē/</p>
@@ -210,12 +293,24 @@
                     <br><br>
                     "Don't take life too seriously, you'll never get out of it alive." - Elbert Hubbard </p>
             </div>
-        </div>
+        </dialog>
 
         <footer>
             <p>2025 Folly Nine. No Rights Reserved. </p>
         </footer>
     </div>
 
+<dialog class="fullscreen-container" id="photoViewer" aria-labelledby="viewerCaption">
+        <div class="fullscreen-image-container">
+            <div class="viewer-toolbar">
+                <button type="button" class="dialog-button" id="previousPhoto" aria-label="Previous photo">Previous</button>
+                <p class="viewer-counter" id="viewerCounter" aria-live="polite"></p>
+                <button type="button" class="dialog-button" id="nextPhoto" aria-label="Next photo">Next</button>
+                <button type="button" class="dialog-button" data-close-dialog autofocus>Close</button>
+            </div>
+            <img id="viewerImage" alt="">
+            <p class="viewer-caption" id="viewerCaption" aria-live="polite"></p>
+        </div>
+    </dialog>
 </body>
 </html> 

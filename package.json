@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "next build"
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "images:previews": "node scripts/generate-previews.mjs"
   },
   "keywords": [],
   "author": "",
