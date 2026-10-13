@@ -124,7 +124,14 @@ a { color: inherit; }
     transition: transform 0.2s ease;
 }
 .image-container:hover { transform: translateY(-3px); }
-.image-container img { display: block; width: 100%; height: auto; border-radius: 5px; }
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 5px;
+}
 .image-caption { display: block; width: 100%; padding: 0.65rem 0.25rem 0; font-size: 0.875rem; line-height: 1.45; }
 
 .photography-content-container, .software-content-container, .trading-content-container {
