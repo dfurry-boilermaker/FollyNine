@@ -171,7 +171,6 @@ a { color: inherit; }
 .social-link:hover { background: #2a4136; }
 .social-link img { display: block; width: 24px; height: 24px; border-radius: 4px; }
 .photography-content-container p, .software-content-container p, .trading-content-container p {
-    max-width: 68ch;
     margin: 0;
     font-size: 1rem;
     line-height: 1.75;
