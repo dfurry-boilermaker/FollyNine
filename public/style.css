@@ -238,6 +238,8 @@ dialog.about-popup::backdrop, dialog.fullscreen-container::backdrop { background
 .viewer-counter { margin: 0 0.5rem; font-variant-numeric: tabular-nums; }
 #viewerImage { display: block; flex: 1 1 auto; min-height: 0; width: 100%; height: 0; object-fit: contain; border-radius: 5px; touch-action: pan-y pinch-zoom; }
 .viewer-caption { flex: 0 0 auto; margin: 0; text-align: center; }
+.viewer-status { flex: 0 0 auto; margin: 0; text-align: center; }
+.viewer-status:empty { display: none; }
 
 @media (max-width: 768px) {
     .site-header-inner { position: relative; flex-wrap: wrap; gap: 0.5rem; }

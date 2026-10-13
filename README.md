@@ -9,10 +9,16 @@ static site. The generated output is ignored by Git. Both local serving and Verc
 use `404.html` for missing pages. Vercel routing serves existing files first, then
 returns the recovery page with HTTP 404 for unknown URLs.
 
-The gallery uses committed 480px and 960px WebP previews. Original photographs
-remain unchanged and load only when opened in the photo viewer. After replacing
-an original photograph, install libwebp locally and run `npm run images:previews`
-to regenerate previews; Vercel does not need libwebp.
+The gallery uses committed 480px and 960px WebP previews. The fullscreen viewer
+shows a decoded preview while a larger version loads, then upgrades to 960px on
+phones or a WebP with a longest edge of 2048px on desktop. It preloads only the
+two neighboring photos and keeps at most six images in its decoded cache.
+Preloading is disabled when the browser requests data savings. Photo changes
+keep captions synchronized and discard results from older navigation requests.
+Original photographs remain unchanged and available at their existing URLs.
+After replacing an original photograph, install libwebp locally and run
+`npm run images:previews` to regenerate previews and fullscreen versions;
+Vercel does not need libwebp.
 
 Run `npm test` to check missing-page responses, image delivery, preview download
 budgets, and the static build. Browser checks should also cover keyboard opening,

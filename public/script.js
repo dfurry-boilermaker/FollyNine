@@ -12,11 +12,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewerImage = document.getElementById('viewerImage');
     const viewerCaption = document.getElementById('viewerCaption');
     const viewerCounter = document.getElementById('viewerCounter');
+    const viewerStatus = document.getElementById('viewerStatus');
     const photos = [...document.querySelectorAll('button.image-container')];
     let currentPhoto = 0;
     let openingControl = null;
     let scrollPosition = 0;
     let swipeStart = null;
+    let photoRequest = 0;
+    const imageCache = new Map();
+
+    function loadImage(source, priority = 'high') {
+        if (imageCache.has(source)) {
+            const entry = imageCache.get(source);
+            imageCache.delete(source);
+            imageCache.set(source, entry);
+            if (priority === 'high') entry.image.fetchPriority = 'high';
+            return entry;
+        }
+        const image = new Image();
+        image.decoding = 'async';
+        image.fetchPriority = priority;
+        image.src = source;
+        const entry = { image, ready: false };
+        entry.promise = image.decode().then(() => {
+            entry.ready = true;
+            return image;
+        }).catch(error => {
+            if (imageCache.get(source) === entry) imageCache.delete(source);
+            throw error;
+        });
+        imageCache.set(source, entry);
+        // Retain a small working set instead of every decoded photo on mobile.
+        if (imageCache.size > 6) {
+            const oldest = imageCache.keys().next().value;
+            const evicted = imageCache.get(oldest);
+            imageCache.delete(oldest);
+            if (!evicted.ready) evicted.image.removeAttribute('src');
+        }
+        return entry;
+    }
+
+    function viewerSource(index) {
+        const preview = photos[index].querySelector('img');
+        return window.innerWidth <= 768 ? preview.dataset.mobileSrc : preview.dataset.viewSrc;
+    }
+
+    function preloadNeighbors(index) {
+        if (window.navigator?.connection?.saveData) return;
+        for (const offset of [-1, 1]) {
+            const neighbor = (index + offset + photos.length) % photos.length;
+            loadImage(viewerSource(neighbor), 'low').promise.catch(() => {});
+        }
+    }
 
     function openDialog(dialog, trigger) {
         if (dialog.open) return;
@@ -46,23 +93,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     aboutButton.addEventListener('click', () => openDialog(aboutDialog, aboutButton));
 
-    function showPhoto(index) {
-        swipeStart = null;
-        currentPhoto = (index + photos.length) % photos.length;
-        const photo = photos[currentPhoto];
+    function displayPhoto(index, source) {
+        const photo = photos[index];
         const preview = photo.querySelector('img');
-        viewerImage.src = preview.dataset.fullSrc;
+        viewerImage.src = source;
         viewerImage.alt = preview.alt;
         viewerImage.width = Number(preview.getAttribute('width'));
         viewerImage.height = Number(preview.getAttribute('height'));
-        viewerCaption.textContent = photo.querySelector('.image-caption').textContent;
-        viewerCounter.textContent = `${currentPhoto + 1} / ${photos.length}`;
+        const caption = photo.querySelector('.image-caption').textContent;
+        const counter = `${index + 1} / ${photos.length}`;
+        if (viewerCaption.textContent !== caption) viewerCaption.textContent = caption;
+        if (viewerCounter.textContent !== counter) viewerCounter.textContent = counter;
+        photoDialog.removeAttribute('aria-busy');
+        viewerStatus.textContent = '';
+    }
+
+    function showPhoto(index) {
+        swipeStart = null;
+        currentPhoto = (index + photos.length) % photos.length;
+        const target = currentPhoto;
+        const request = ++photoRequest;
+        const preview = photos[target].querySelector('img');
+        const full = loadImage(viewerSource(target));
+        let fullDisplayed = false;
+        viewerStatus.textContent = 'Loading photo…';
+        photoDialog.setAttribute('aria-busy', 'true');
+
+        // Only replace the photo and its caption once the replacement is decoded.
+        const displayFull = () => {
+            if (request !== photoRequest || !photoDialog.open) return;
+            fullDisplayed = true;
+            displayPhoto(target, full.image.src);
+            preloadNeighbors(target);
+        };
+        if (full.ready) {
+            displayFull();
+            return;
+        }
+        const small = loadImage(preview.currentSrc || preview.src);
+        small.promise.then(image => {
+            if (request === photoRequest && photoDialog.open && !fullDisplayed) displayPhoto(target, image.src);
+        }).catch(() => {});
+        full.promise.then(displayFull).catch(() => {});
+        Promise.allSettled([small.promise, full.promise]).then(results => {
+            if (request !== photoRequest || !photoDialog.open) return;
+            if (results.every(result => result.status === 'rejected')) {
+                photoDialog.removeAttribute('aria-busy');
+                viewerStatus.textContent = 'This photo could not load. Try Previous or Next.';
+            }
+        });
     }
 
     photos.forEach((photo, index) => {
         photo.addEventListener('click', () => {
-            showPhoto(index);
             openDialog(photoDialog, photo);
+            showPhoto(index);
         });
     });
 
@@ -90,7 +175,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     viewerImage.addEventListener('touchcancel', () => { swipeStart = null; }, { passive: true });
-    photoDialog.addEventListener('close', () => { swipeStart = null; });
+    photoDialog.addEventListener('close', () => {
+        swipeStart = null;
+        photoRequest++;
+        photoDialog.removeAttribute('aria-busy');
+        viewerStatus.textContent = '';
+    });
 
     photoDialog.addEventListener('keydown', event => {
         if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {

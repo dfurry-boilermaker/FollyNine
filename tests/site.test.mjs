@@ -54,7 +54,7 @@ test('gallery previews fit the download budget; originals stay available separat
 });
 
 test('preview and original image URLs both serve usable WebP files', async () => {
-    for (const path of ['/images/previews/1-480.webp', '/images/previews/20-960.webp', '/images/1.webp']) {
+    for (const path of ['/images/previews/1-480.webp', '/images/previews/20-960.webp', '/images/viewer/9.webp', '/images/1.webp']) {
         const response = await fetch(`${base}${path}`);
         assert.equal(response.status, 200);
         assert.match(response.headers.get('content-type'), /image\/webp/);
@@ -64,12 +64,29 @@ test('preview and original image URLs both serve usable WebP files', async () =>
     }
 });
 
+test('fullscreen image variants are configured and fit the download budget', async () => {
+    let total = 0;
+    let originalTotal = 0;
+    for (let photo = 1; photo <= 20; photo++) {
+        const size = (await stat(join(root, `public/images/viewer/${photo}.webp`))).size;
+        assert.ok(size < 1_200_000, `fullscreen photo ${photo} is ${size} bytes`);
+        total += size;
+        originalTotal += (await stat(join(root, `public/images/${photo}.webp`))).size;
+    }
+    assert.ok(total < 8_000_000, `fullscreen gallery is ${total} bytes`);
+    assert.ok(total < originalTotal / 5, 'fullscreen variants should save at least 80%');
+    const html = await readFile(join(root, 'public/index.html'), 'utf8');
+    assert.equal([...html.matchAll(/data-view-src="\/images\/viewer\/\d+\.webp"/g)].length, 20);
+    assert.equal([...html.matchAll(/data-mobile-src="\/images\/previews\/\d+-960\.webp"/g)].length, 20);
+});
+
 test('static build includes the home page, recovery page, and every preview', async () => {
     execFileSync(process.execPath, [join(root, 'scripts/build.mjs')], { cwd: root });
     for (const page of ['index.html', '404.html']) {
         assert.equal(await readFile(join(root, 'dist', page), 'utf8'), await readFile(join(root, 'public', page), 'utf8'));
     }
     for (let photo = 1; photo <= 20; photo++) {
+        await stat(join(root, `dist/images/viewer/${photo}.webp`));
         for (const width of [480, 960]) {
             await stat(join(root, `dist/images/previews/${photo}-${width}.webp`));
         }

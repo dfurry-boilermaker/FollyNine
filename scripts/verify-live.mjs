@@ -14,7 +14,10 @@ for (const [path, file] of [
     ['/speckles.js', 'speckles.js'],
     ['/images/F9.jpeg', 'images/F9.jpeg'],
     ['/images/previews/1-480.webp', 'images/previews/1-480.webp'],
-    ['/images/previews/20-960.webp', 'images/previews/20-960.webp']
+    ['/images/previews/20-960.webp', 'images/previews/20-960.webp'],
+    ['/images/viewer/1.webp', 'images/viewer/1.webp'],
+    ['/images/viewer/9.webp', 'images/viewer/9.webp'],
+    ['/images/viewer/20.webp', 'images/viewer/20.webp']
 ]) {
     const response = await fetch(new URL(path, origin), { signal: AbortSignal.timeout(20_000) });
     assert.equal(response.status, 200, `${path} should be available`);

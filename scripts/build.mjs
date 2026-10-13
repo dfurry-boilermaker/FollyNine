@@ -9,7 +9,7 @@ const output = join(root, 'dist');
 // Catch missing assets before shipping a static deployment.
 for (const page of ['index.html', '404.html']) {
     const html = await readFile(join(source, page), 'utf8');
-    const assets = [...html.matchAll(/(?:src|href|data-full-src)="([^"#]+)"/g)]
+    const assets = [...html.matchAll(/(?:src|href|data-full-src|data-view-src|data-mobile-src)="([^"#]+)"/g)]
         .map(match => match[1]);
     for (const match of html.matchAll(/srcset="([^"]+)"/g)) {
         assets.push(...match[1].split(',').map(candidate => candidate.trim().split(/\s+/)[0]));
