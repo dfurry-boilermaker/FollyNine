@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPhoto = 0;
     let openingControl = null;
     let scrollPosition = 0;
+    let swipeStart = null;
 
     function openDialog(dialog, trigger) {
         if (dialog.open) return;
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     aboutButton.addEventListener('click', () => openDialog(aboutDialog, aboutButton));
 
     function showPhoto(index) {
+        swipeStart = null;
         currentPhoto = (index + photos.length) % photos.length;
         const photo = photos[currentPhoto];
         const preview = photo.querySelector('img');
@@ -66,6 +68,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('previousPhoto').addEventListener('click', () => showPhoto(currentPhoto - 1));
     document.getElementById('nextPhoto').addEventListener('click', () => showPhoto(currentPhoto + 1));
+
+    photoDialog.addEventListener('touchstart', event => {
+        swipeStart = null;
+        if (!photoDialog.open || event.target !== viewerImage || event.touches.length !== 1) return;
+        const touch = event.touches[0];
+        swipeStart = { id: touch.identifier, x: touch.clientX, y: touch.clientY };
+    }, { passive: true });
+
+    viewerImage.addEventListener('touchend', event => {
+        const start = swipeStart;
+        swipeStart = null;
+        if (!start || !photoDialog.open || event.touches.length !== 0) return;
+        const touch = [...event.changedTouches].find(item => item.identifier === start.id);
+        if (!touch) return;
+        const distanceX = touch.clientX - start.x;
+        const distanceY = touch.clientY - start.y;
+        // Require a deliberate horizontal swipe; taps, vertical movement, and pinches stay native.
+        if (Math.abs(distanceX) < 50 || Math.abs(distanceX) < Math.abs(distanceY) * 1.5) return;
+        showPhoto(currentPhoto + (distanceX < 0 ? 1 : -1));
+    }, { passive: true });
+
+    viewerImage.addEventListener('touchcancel', () => { swipeStart = null; }, { passive: true });
+    photoDialog.addEventListener('close', () => { swipeStart = null; });
+
     photoDialog.addEventListener('keydown', event => {
         if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
             event.preventDefault();
